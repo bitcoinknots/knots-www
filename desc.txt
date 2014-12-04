@@ -54,6 +54,10 @@ Specifically, the following spammers are identified and ignored:
 - BetCoin Dice
 - Crazy Horse Battery Staple
 - Counterparty (only old spammy encoding, NOT non-spammy encodings)
+- Lucky Bit
+- Mastercoin
+- SatoshiBones
+- SatoshiDICE
 
 
 == Git access ==
