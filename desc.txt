@@ -1,0 +1,63 @@
+This fork is a collection of improvements to Bitcoin Core maintained out of the
+master git tree.
+
+== Patch files ==
+This patchset is distributed as 4 independent patch files:
+
+
+=== syslibs ===
+Adds options to build Bitcoin Core against system LevelDB and libsecp256k1
+libraries (see ./configure --help for usage).
+
+Please note this may be dangerous and make theft from you possible if used with
+versions of the libraries which have not been audited to meet the bug-for-bug
+compatibility required by Bitcoin's consensus protocol. The patch leaves these
+options disabled by default for this reason.
+
+
+=== ljrF ===
+This is a collection of functionality improvements:
+
+- Discourage fee sniping with nLockTime
+  https://github.com/bitcoin/bitcoin/pull/2340
+
+- -acceptnonstdtxn option to skip "non-standard transaction" checks
+  https://github.com/bitcoin/bitcoin/pull/559
+
+- Support for Tonal Bitcoin units (ᵇTBC, ˢTBC, and TBC)
+  https://github.com/bitcoin/bitcoin/pull/929
+
+- Restore FIRST_CLASS_MESSAGING
+  https://github.com/bitcoin/bitcoin/pull/2014
+
+- Parse URIs with non-BTC amounts
+  https://github.com/bitcoin/bitcoin/pull/553
+
+- Send 'mempool' P2P command at the start of each P2P session
+  https://github.com/bitcoin/bitcoin/pull/1918
+
+- Add user interface to set dust limit and filtered addresses
+  https://github.com/bitcoin/bitcoin/pull/2383
+
+
+=== cpfp ===
+This is a policy change that makes mining resolve transaction dependencies when
+considering fees. See also:
+- CreateNewBlock: Child-pays-for-parent / Add transaction fee later
+  https://github.com/bitcoin/bitcoin/pull/1647
+
+
+=== spamfilter ===
+This is a policy change that improves the spam filtering capabilities of Bitcoin
+Core, notably including pattern matching for notorious spammer scripts.
+Specifically, the following spammers are identified and ignored:
+- BetCoin Dice
+- Crazy Horse Battery Staple
+- Counterparty (only old spammy encoding, NOT non-spammy encodings)
+
+
+== Git access ==
+It is also available via git from git://github.com/luke-jr/bitcoin.git in the following branches:
+	0.10.x-ljrF (includes syslibs and ljrF)
+	cpfp
+	spamfilter
