@@ -61,6 +61,7 @@ This is a collection of functionality improvements:
 - Add time offset into getpeerinfo output
   https://github.com/bitcoin/bitcoin/pull/5476
 
+
 === cpfp ===
 This is a policy change that makes mining resolve transaction dependencies when
 considering fees. See also:
