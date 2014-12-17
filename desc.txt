@@ -2,7 +2,12 @@ This fork is a collection of improvements to Bitcoin Core maintained out of the
 master git tree.
 
 == Patch files ==
-This patchset is distributed as 4 independent patch files:
+This patchset is distributed as 6 independent patch files:
+
+
+=== 1stclassmsg ===
+- Put messaging tools in a tab rather than popup window, if configured with --enable-first-class-messaging
+  https://github.com/bitcoin/bitcoin/pull/2014
 
 
 === syslibs ===
@@ -13,6 +18,8 @@ Please note this may be dangerous and make theft from you possible if used with
 versions of the libraries which have not been audited to meet the bug-for-bug
 compatibility required by Bitcoin's consensus protocol. The patch leaves these
 options disabled by default for this reason.
+
+It also adds a pkg-config (.pc) file for libbitcoinconsensus.
 
 
 === ljrF ===
@@ -27,9 +34,6 @@ This is a collection of functionality improvements:
 - Support for Tonal Bitcoin units (ᵇTBC, ˢTBC, and TBC)
   https://github.com/bitcoin/bitcoin/pull/929
 
-- Restore FIRST_CLASS_MESSAGING
-  https://github.com/bitcoin/bitcoin/pull/2014
-
 - Parse URIs with non-BTC amounts
   https://github.com/bitcoin/bitcoin/pull/553
 
@@ -39,12 +43,35 @@ This is a collection of functionality improvements:
 - Add user interface to set dust limit and filtered addresses
   https://github.com/bitcoin/bitcoin/pull/2383
 
+- Network activity toggle
+  https://github.com/bitcoin/bitcoin/pull/5314
+
+- Add -onion=noproxy for unproxied *.onion connections
+  https://github.com/bitcoin/bitcoin/pull/5298
+
+- Added -whiteconnections=<n> option
+  https://github.com/bitcoin/bitcoin/pull/5288
+
+- Qt: Elaborate on signverify message dialog warning
+  https://github.com/bitcoin/bitcoin/pull/5144
+
+- Add scriptPubKey field to validateaddress RPC call
+  https://github.com/bitcoin/bitcoin/pull/4964
+
+- Add time offset into getpeerinfo output
+  https://github.com/bitcoin/bitcoin/pull/5476
 
 === cpfp ===
 This is a policy change that makes mining resolve transaction dependencies when
 considering fees. See also:
 - CreateNewBlock: Child-pays-for-parent / Add transaction fee later
   https://github.com/bitcoin/bitcoin/pull/1647
+
+
+=== dcmp ===
+This is a policy change by Peter Todd that enables multiple data pushes in datacarrier transactions. See also:
+- Accept any sequence of PUSHDATAs in OP_RETURN outputs
+  https://github.com/bitcoin/bitcoin/pull/5079
 
 
 === spamfilter ===
@@ -60,8 +87,14 @@ Specifically, the following spammers are identified and ignored:
 - SatoshiDICE
 
 
+=== zeromq ===
+- Add ZMQ support. Report blocks and transactions via ZMQ.
+  https://github.com/bitcoin/bitcoin/pull/5303
+
+
 == Git access ==
 It is also available via git from git://github.com/luke-jr/bitcoin.git in the following branches:
-	0.10.x-ljrF (includes syslibs and ljrF)
+	0.10.x-syslibs
+	0.10.x-ljrF (includes syslibs, ljrF, 1stclassmsg, and zeromq)
 	cpfp
 	spamfilter
