@@ -2,7 +2,7 @@ This fork is a collection of improvements to Bitcoin Core maintained out of the
 master git tree.
 
 == Patch files ==
-This patchset is distributed as 6 independent patch files:
+This patchset is distributed as 7 independent patch files:
 
 
 === 1stclassmsg ===
@@ -97,5 +97,5 @@ Specifically, the following spammers are identified and ignored:
 It is also available via git from git://github.com/luke-jr/bitcoin.git in the following branches:
 	0.10.x-syslibs
 	0.10.x-ljrF (includes syslibs, ljrF, 1stclassmsg, and zeromq)
-	cpfp
+	minedeps (cpfp)
 	spamfilter
