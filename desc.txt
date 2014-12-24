@@ -4,7 +4,8 @@ master git tree.
 == Binaries ==
 There are two sets of binaries: ljrF which includes only functional
 improvements, but retains Bitcoin Core's reference policy; and ljrP which
-includes the three policy enhancements described below under "Patch files".
+also includes the three policy enhancements described below under "Patch files"
+(in addition to the functional improvements).
 
 == Patch files ==
 This patchset is distributed as 7 independent patch files:
