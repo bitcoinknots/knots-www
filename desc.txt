@@ -1,13 +1,13 @@
 This fork is a collection of improvements to Bitcoin Core maintained out of the
 master git tree.
 
+== Binaries ==
+There are two sets of binaries: ljrF which includes only functional
+improvements, but retains Bitcoin Core's reference policy; and ljrP which
+includes the three policy enhancements described below under "Patch files".
+
 == Patch files ==
 This patchset is distributed as 7 independent patch files:
-
-
-=== 1stclassmsg ===
-- Put messaging tools in a tab rather than popup window, if configured with --enable-first-class-messaging
-  https://github.com/bitcoin/bitcoin/pull/2014
 
 
 === syslibs ===
@@ -62,17 +62,21 @@ This is a collection of functionality improvements:
   https://github.com/bitcoin/bitcoin/pull/5476
 
 
+=== 1stclassmsg ===
+- Put messaging tools in a tab rather than popup window, if configured with --enable-first-class-messaging
+  https://github.com/bitcoin/bitcoin/pull/2014
+
+
+=== zeromq ===
+- Add ZMQ support. Report blocks and transactions via ZMQ.
+  https://github.com/bitcoin/bitcoin/pull/5303
+
+
 === cpfp ===
 This is a policy change that makes mining resolve transaction dependencies when
 considering fees. See also:
 - CreateNewBlock: Child-pays-for-parent / Add transaction fee later
   https://github.com/bitcoin/bitcoin/pull/1647
-
-
-=== dcmp ===
-This is a policy change by Peter Todd that enables multiple data pushes in datacarrier transactions. See also:
-- Accept any sequence of PUSHDATAs in OP_RETURN outputs
-  https://github.com/bitcoin/bitcoin/pull/5079
 
 
 === spamfilter ===
@@ -88,14 +92,16 @@ Specifically, the following spammers are identified and ignored:
 - SatoshiDICE
 
 
-=== zeromq ===
-- Add ZMQ support. Report blocks and transactions via ZMQ.
-  https://github.com/bitcoin/bitcoin/pull/5303
+=== dcmp ===
+This is a policy change by Peter Todd that enables multiple data pushes in datacarrier transactions. See also:
+- Accept any sequence of PUSHDATAs in OP_RETURN outputs
+  https://github.com/bitcoin/bitcoin/pull/5079
 
 
 == Git access ==
 It is also available via git from git://github.com/luke-jr/bitcoin.git in the following branches:
 	0.10.x-syslibs
 	0.10.x-ljrF (includes syslibs, ljrF, 1stclassmsg, and zeromq)
+	0.10.x-ljrP (includes everything)
 	minedeps (cpfp)
 	spamfilter
