@@ -1,12 +1,6 @@
 This fork is a collection of improvements to Bitcoin Core maintained out of the
 master git tree.
 
-== Binaries ==
-There are two sets of binaries: ljrF which includes only functional
-improvements, but retains Bitcoin Core's reference policy; and ljrP which
-also includes the three policy enhancements described below under "Patch files"
-(in addition to the functional improvements).
-
 == Patch files ==
 This patchset is distributed as 7 independent patch files:
 
@@ -20,7 +14,8 @@ versions of the libraries which have not been audited to meet the bug-for-bug
 compatibility required by Bitcoin's consensus protocol. The patch leaves these
 options disabled by default for this reason.
 
-It also adds a pkg-config (.pc) file for libbitcoinconsensus.
+It also adds a pkg-config (.pc) file for libbitcoinconsensus, and options to
+disable building bitcoin-cli or bitcoin-tx individually.
 
 
 === ljrF ===
@@ -28,6 +23,12 @@ This is a collection of functionality improvements:
 
 - Discourage fee sniping with nLockTime
   https://github.com/bitcoin/bitcoin/pull/2340
+
+- Add scriptPubKey field to validateaddress RPC call
+  https://github.com/bitcoin/bitcoin/pull/4964
+
+- Use real text rather than image-rendered text for unit selector
+  https://github.com/bitcoin/bitcoin/pull/5551
 
 - -acceptnonstdtxn option to skip "non-standard transaction" checks
   https://github.com/bitcoin/bitcoin/pull/559
@@ -55,9 +56,6 @@ This is a collection of functionality improvements:
 
 - Qt: Elaborate on signverify message dialog warning
   https://github.com/bitcoin/bitcoin/pull/5144
-
-- Add scriptPubKey field to validateaddress RPC call
-  https://github.com/bitcoin/bitcoin/pull/4964
 
 - Add time offset into getpeerinfo output
   https://github.com/bitcoin/bitcoin/pull/5476
