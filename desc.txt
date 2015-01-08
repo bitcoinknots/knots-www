@@ -45,9 +45,6 @@ This is a collection of functionality improvements:
 - Add user interface to set dust limit and filtered addresses
   https://github.com/bitcoin/bitcoin/pull/2383
 
-- Network activity toggle
-  https://github.com/bitcoin/bitcoin/pull/5314
-
 - Add -onion=noproxy for unproxied *.onion connections
   https://github.com/bitcoin/bitcoin/pull/5298
 
@@ -59,6 +56,9 @@ This is a collection of functionality improvements:
 
 - Add time offset into getpeerinfo output
   https://github.com/bitcoin/bitcoin/pull/5476
+
+- Add unconfirmed and immature balances to getwalletinfo
+  https://github.com/bitcoin/bitcoin/pull/5540
 
 
 === 1stclassmsg ===
