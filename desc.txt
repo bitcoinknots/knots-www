@@ -28,8 +28,8 @@ See also:
 - configure: Add unsupported --with-system-libsecp256k1 configure flag
   https://github.com/bitcoin/bitcoin/pull/5416
 
-- Discourage fee sniping with nLockTime
-  https://github.com/bitcoin/bitcoin/pull/2340
+- configure: Make it possible to build only one of bitcoin-cli or bitcoin-tx
+  https://github.com/bitcoin/bitcoin/pull/5618
 
 
 === ljrF ===
