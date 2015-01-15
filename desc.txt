@@ -17,6 +17,20 @@ options disabled by default for this reason.
 It also adds a pkg-config (.pc) file for libbitcoinconsensus, and options to
 disable building bitcoin-cli or bitcoin-tx individually.
 
+See also:
+
+- libbitcoinconsensus: Add pkg-config support
+  https://github.com/bitcoin/bitcoin/pull/5334
+
+- Support for building against system LevelDB
+  https://github.com/bitcoin/bitcoin/pull/2241
+
+- configure: Add unsupported --with-system-libsecp256k1 configure flag
+  https://github.com/bitcoin/bitcoin/pull/5416
+
+- Discourage fee sniping with nLockTime
+  https://github.com/bitcoin/bitcoin/pull/2340
+
 
 === ljrF ===
 This is a collection of functionality improvements:
