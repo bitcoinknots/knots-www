@@ -44,6 +44,18 @@ This is a collection of functionality improvements:
 - Use real text rather than image-rendered text for unit selector
   https://github.com/bitcoin/bitcoin/pull/5551
 
+- Qt: Elaborate on signverify message dialog warning
+  https://github.com/bitcoin/bitcoin/pull/5144
+
+- Add time offset into getpeerinfo output
+  https://github.com/bitcoin/bitcoin/pull/5476
+
+- Add unconfirmed and immature balances to getwalletinfo
+  https://github.com/bitcoin/bitcoin/pull/5540
+
+- [Qt] allow unit changes for read-only BitcoinAmountField
+  https://github.com/bitcoin/bitcoin/pull/5729
+
 - -acceptnonstdtxn option to skip "non-standard transaction" checks
   https://github.com/bitcoin/bitcoin/pull/559
 
@@ -64,15 +76,6 @@ This is a collection of functionality improvements:
 
 - Added -whiteconnections=<n> option
   https://github.com/bitcoin/bitcoin/pull/5288
-
-- Qt: Elaborate on signverify message dialog warning
-  https://github.com/bitcoin/bitcoin/pull/5144
-
-- Add time offset into getpeerinfo output
-  https://github.com/bitcoin/bitcoin/pull/5476
-
-- Add unconfirmed and immature balances to getwalletinfo
-  https://github.com/bitcoin/bitcoin/pull/5540
 
 
 === 1stclassmsg ===
@@ -95,7 +98,7 @@ considering fees. See also:
 === spamfilter ===
 This is a policy change that improves the spam filtering capabilities of Bitcoin
 Core, notably including pattern matching for notorious spammer scripts.
-Specifically, the following spammers are identified and ignored:
+Specifically, spam created by the following are identified and ignored:
 - BetCoin Dice
 - Crazy Horse Battery Staple
 - Counterparty (only old spammy encoding, NOT non-spammy encodings)
