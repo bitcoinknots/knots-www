@@ -2,7 +2,7 @@ This fork is a collection of improvements to Bitcoin Core maintained out of the
 master git tree.
 
 == Patch files ==
-This patchset is distributed as 7 independent patch files:
+This patchset is distributed as 6 independent patch files:
 
 
 === syslibs ===
@@ -14,13 +14,12 @@ versions of the libraries which have not been audited to meet the bug-for-bug
 compatibility required by Bitcoin's consensus protocol. The patch leaves these
 options disabled by default for this reason.
 
-It also adds a pkg-config (.pc) file for libbitcoinconsensus, and options to
-disable building bitcoin-cli or bitcoin-tx individually.
+It also adds options to disable building bitcoin-cli or bitcoin-tx individually.
 
 See also:
 
-- libbitcoinconsensus: Add pkg-config support
-  https://github.com/bitcoin/bitcoin/pull/5334
+- configure: BITCOIN_SUBDIR_TO_INCLUDE: Improve compatibility with paths including space and multiline cpp output
+  https://github.com/bitcoin/bitcoin/pull/5872
 
 - Support for building against system LevelDB
   https://github.com/bitcoin/bitcoin/pull/2241
@@ -33,28 +32,7 @@ See also:
 
 
 === ljrF ===
-This is a collection of functionality improvements:
-
-- Discourage fee sniping with nLockTime
-  https://github.com/bitcoin/bitcoin/pull/2340
-
-- Add scriptPubKey field to validateaddress RPC call
-  https://github.com/bitcoin/bitcoin/pull/4964
-
-- Use real text rather than image-rendered text for unit selector
-  https://github.com/bitcoin/bitcoin/pull/5551
-
-- Qt: Elaborate on signverify message dialog warning
-  https://github.com/bitcoin/bitcoin/pull/5144
-
-- Add time offset into getpeerinfo output
-  https://github.com/bitcoin/bitcoin/pull/5476
-
-- Add unconfirmed and immature balances to getwalletinfo
-  https://github.com/bitcoin/bitcoin/pull/5540
-
-- [Qt] allow unit changes for read-only BitcoinAmountField
-  https://github.com/bitcoin/bitcoin/pull/5729
+This is a collection of fixes and functionality improvements:
 
 - -acceptnonstdtxn option to skip "non-standard transaction" checks
   https://github.com/bitcoin/bitcoin/pull/559
@@ -71,21 +49,123 @@ This is a collection of functionality improvements:
 - Add user interface to set dust limit and filtered addresses
   https://github.com/bitcoin/bitcoin/pull/2383
 
-- Add -onion=noproxy for unproxied *.onion connections
-  https://github.com/bitcoin/bitcoin/pull/5298
-
 - Added -whiteconnections=<n> option
   https://github.com/bitcoin/bitcoin/pull/5288
 
+- [REST] JSON support for /rest/headers
+  https://github.com/bitcoin/bitcoin/pull/5486
 
-=== 1stclassmsg ===
-- Put messaging tools in a tab rather than popup window, if configured with --enable-first-class-messaging
-  https://github.com/bitcoin/bitcoin/pull/2014
+- Restore ability to display addresses in GUI
+  https://github.com/bitcoin/bitcoin/pull/5861
+
+- [Qt] support for persisted rpc console history
+  https://github.com/bitcoin/bitcoin/pull/5891
+
+- Add absurdly high fee message to validation state
+  https://github.com/bitcoin/bitcoin/pull/5913
+
+- add key generation type
+  https://github.com/bitcoin/bitcoin/pull/5916
+
+- Reduce checkpoints' effect on consensus.
+  https://github.com/bitcoin/bitcoin/pull/5927
+
+- [RPC] Add optional locktime to createrawtransaction
+  https://github.com/bitcoin/bitcoin/pull/5936
+
+- Bugfix: Fix testnet-in-a-box use case
+  https://github.com/bitcoin/bitcoin/pull/5987
+
+- [REST] Add memory pool API
+  https://github.com/bitcoin/bitcoin/pull/6013
+
+- fundrawtransaction
+  https://github.com/bitcoin/bitcoin/pull/6088
+
+- Do not inv old or missing blocks when pruning
+  https://github.com/bitcoin/bitcoin/pull/6130
+
+- Fix various warnings
+  https://github.com/bitcoin/bitcoin/pull/6133
+
+- Add setban/listbanned RPC commands
+  https://github.com/bitcoin/bitcoin/pull/6158
+
+- Prevent block.nTime from decreasing
+  https://github.com/bitcoin/bitcoin/pull/6177
+
+- Refactor EvalScript into a CScriptExecution class, so single-stepping can be done
+  https://github.com/bitcoin/bitcoin/pull/6178
+
+- [Qt] extend rpc console peers tab
+  https://github.com/bitcoin/bitcoin/pull/6209
+
+- [Qt] disconnect peers from peers tab via context menu
+  https://github.com/bitcoin/bitcoin/pull/6217
+
+- Be even stricter in processing unrequested blocks
+  https://github.com/bitcoin/bitcoin/pull/6224
+
+- Add getblockheader RPC call
+  https://github.com/bitcoin/bitcoin/pull/6247
+
+- Add `paytxfee` and `errors` JSON fields where appropriate
+  https://github.com/bitcoin/bitcoin/pull/6257
+
+- Return all available information via RPC call "validateaddress"
+  https://github.com/bitcoin/bitcoin/pull/6262
+
+- New RPC command disconnectnode
+  https://github.com/bitcoin/bitcoin/pull/6271
+
+- [Qt] fix debug console window handling when e.g. minimized
+  https://github.com/bitcoin/bitcoin/pull/6288
+
+- Prevent peer flooding inv request queue (redux)
+  https://github.com/bitcoin/bitcoin/pull/6306
+
+- rpcban fixes
+  https://github.com/bitcoin/bitcoin/pull/6307
+
+- banlist.dat: store banlist on disk
+  https://github.com/bitcoin/bitcoin/pull/6310
+
+- [Qt] allow banning and unbanning over UI->peers table
+  https://github.com/bitcoin/bitcoin/pull/6315
+
+- acceptnonstdtxn option to skip (most) "non-standard transaction" checks, for testnet/regtest only
+  https://github.com/bitcoin/bitcoin/pull/6329
+
+- Avoid "Unknown command" messages when receiving getaddr on outbound c…
+  https://github.com/bitcoin/bitcoin/pull/6344
+
+- Add OP_RETURN support in createrawtransaction RPC call, add tests.
+  https://github.com/bitcoin/bitcoin/pull/6346
+
+- Show softfork status in getblockchaininfo
+  https://github.com/bitcoin/bitcoin/pull/6353
+
+- Delay initial pruning until after wallet init
+  https://github.com/bitcoin/bitcoin/pull/6356
+
+- Use real number of cores for default -par, ignore virtual cores
+  https://github.com/bitcoin/bitcoin/pull/6361
+
+- Fix null id in RPC response during startup
+  https://github.com/bitcoin/bitcoin/pull/6362
 
 
 === zeromq ===
 - Add ZMQ support. Report blocks and transactions via ZMQ.
-  https://github.com/bitcoin/bitcoin/pull/5303
+  https://github.com/bitcoin/bitcoin/pull/6103
+
+
+=== cltv ===
+This is a policy change implementing BIP 65 (OP_CHECKLOCKTIMEVERIFY) as a soft
+policy. It does not enforce it as a consensus rule, and is therefore safe to
+use even prior to actual BIP 65 deployment. See also:
+- Mempool only CHECKLOCKTIMEVERIFY (BIP65) verification, unparameterized version
+  https://github.com/bitcoin/bitcoin/pull/6124
 
 
 === cpfp ===
@@ -100,24 +180,19 @@ This is a policy change that improves the spam filtering capabilities of Bitcoin
 Core, notably including pattern matching for notorious spammer scripts.
 Specifically, spam created by the following are identified and ignored:
 - BetCoin Dice
-- Crazy Horse Battery Staple
-- Counterparty (only old spammy encoding, NOT non-spammy encodings)
+- Correct Horse Battery Staple
+- Old spammy Counterparty encoding (NOT current versions of Counterparty)
 - Lucky Bit
 - Mastercoin
 - SatoshiBones
 - SatoshiDICE
 
 
-=== dcmp ===
-This is a policy change by Peter Todd that enables multiple data pushes in datacarrier transactions. See also:
-- Accept any sequence of PUSHDATAs in OP_RETURN outputs
-  https://github.com/bitcoin/bitcoin/pull/5079
-
-
 == Git access ==
-It is also available via git from git://github.com/luke-jr/bitcoin.git in the following branches:
+It is also available via git from git://github.com/luke-jr/bitcoin.git in the
+following branches:
 	0.10.x-syslibs
-	0.10.x-ljrF (includes syslibs, ljrF, 1stclassmsg, and zeromq)
+	0.10.x-ljrF (includes syslibs, ljrF, and zeromq)
 	0.10.x-ljrP (includes everything)
 	minedeps (cpfp)
 	spamfilter
