@@ -14,7 +14,8 @@ versions of the libraries which have not been audited to meet the bug-for-bug
 compatibility required by Bitcoin's consensus protocol. The patch leaves these
 options disabled by default for this reason.
 
-It also adds options to disable building bitcoin-cli or bitcoin-tx individually.
+It also extends the OpenRC init script to be more configurable, and adds options
+to disable building bitcoin-cli or bitcoin-tx individually.
 
 See also:
 
