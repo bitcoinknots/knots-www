@@ -30,18 +30,21 @@ See also:
 - configure: Make it possible to build only one of bitcoin-cli or bitcoin-tx
   https://github.com/bitcoin/bitcoin/pull/5618
 
+- Add BITCOIND_SIGTERM_TIMEOUT to OpenRC init scripts
+  https://github.com/bitcoin/bitcoin/pull/6401
+
 
 === ljrF ===
 This is a collection of fixes and functionality improvements:
+
+- Parse URIs with non-BTC amounts
+  https://github.com/bitcoin/bitcoin/pull/553
 
 - -acceptnonstdtxn option to skip "non-standard transaction" checks
   https://github.com/bitcoin/bitcoin/pull/559
 
 - Support for Tonal Bitcoin units (ᵇTBC, ˢTBC, and TBC)
   https://github.com/bitcoin/bitcoin/pull/929
-
-- Parse URIs with non-BTC amounts
-  https://github.com/bitcoin/bitcoin/pull/553
 
 - Send 'mempool' P2P command at the start of each P2P session
   https://github.com/bitcoin/bitcoin/pull/1918
@@ -87,6 +90,9 @@ This is a collection of fixes and functionality improvements:
 
 - Fix various warnings
   https://github.com/bitcoin/bitcoin/pull/6133
+
+- Buffer log messages and explicitly open logs
+  https://github.com/bitcoin/bitcoin/pull/6149
 
 - Add setban/listbanned RPC commands
   https://github.com/bitcoin/bitcoin/pull/6158
@@ -153,6 +159,15 @@ This is a collection of fixes and functionality improvements:
 
 - Fix null id in RPC response during startup
   https://github.com/bitcoin/bitcoin/pull/6362
+
+- banlist updates
+  https://github.com/bitcoin/bitcoin/pull/6371
+
+- rpc: Implement random-cookie based authentication
+  https://github.com/bitcoin/bitcoin/pull/6388
+
+- Option -limitunconfdepth to reject transactions dependent on a long chain of unconfirmed ones
+  https://github.com/bitcoin/bitcoin/pull/6403
 
 
 === zeromq ===
