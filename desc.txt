@@ -231,5 +231,6 @@ following branches:
 	0.11.x-syslibs
 	0.11.x-ljrF (includes syslibs, ljrF, and zeromq)
 	0.11.x-ljrP (includes everything except rbf)
+	zeromq-0.11.x
 	minedeps (cpfp)
 	spamfilter
