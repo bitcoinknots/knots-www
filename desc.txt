@@ -2,7 +2,7 @@ This fork is a collection of improvements to Bitcoin Core maintained out of the
 master git tree.
 
 == Patch files ==
-This patchset is distributed as 6 independent patch files:
+This patchset is distributed as 8 independent patch files:
 
 
 === syslibs ===
@@ -203,12 +203,32 @@ Specifically, spam created by the following are identified and ignored:
 - SatoshiBones
 - SatoshiDICE
 
+(Note that the organizations and people <em>responsible</em> for the spam are <em>not</em> filtered, only the spam itself.)
+
+
+=== dcmp ===
+This is a policy change by Peter Todd that enables multiple data pushes in
+datacarrier transactions. See also:
+- Accept any sequence of PUSHDATAs in OP_RETURN outputs
+  https://github.com/bitcoin/bitcoin/pull/6424
+
+
+=== rbf ===
+This is a policy change by Peter Todd that replaces transactions if the new one
+has a sufficiently higher fee. See also:
+- Add replace-by-fee logic to the mempool
+  https://github.com/bitcoin/bitcoin/pull/4298
+
+Note that this patch is Peter Todd's replace-by-fee-v0.11.0 git branch, slightly
+hand-modified to cleanly apply to both vanilla v0.11.1 as well as derivatives
+patched with this patchset.
+
 
 == Git access ==
 It is also available via git from git://github.com/luke-jr/bitcoin.git in the
 following branches:
-	0.10.x-syslibs
-	0.10.x-ljrF (includes syslibs, ljrF, and zeromq)
-	0.10.x-ljrP (includes everything)
+	0.11.x-syslibs
+	0.11.x-ljrF (includes syslibs, ljrF, and zeromq)
+	0.11.x-ljrP (includes everything except rbf)
 	minedeps (cpfp)
 	spamfilter
