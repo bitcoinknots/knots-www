@@ -203,7 +203,8 @@ Specifically, spam created by the following are identified and ignored:
 - SatoshiBones
 - SatoshiDICE
 
-(Note that the organizations and people <em>responsible</em> for the spam are <em>not</em> filtered, only the spam itself.)
+(Note that the organizations and people /responsible/ for the spam are /not/
+filtered, only the spam itself.)
 
 
 === dcmp ===
