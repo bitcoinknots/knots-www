@@ -302,7 +302,7 @@ has a sufficiently higher fee. See also:
   https://github.com/bitcoin/bitcoin/pull/4298
 
 Note that this patch is Peter Todd's replace-by-fee-v0.11.2 git branch, slightly
-hand-modified to cleanly apply to both vanilla v0.11.1 as well as derivatives
+hand-modified to cleanly apply to both vanilla v0.11.2 as well as derivatives
 patched with this patchset.
 
 
