@@ -1,5 +1,5 @@
-This fork is a collection of improvements to Bitcoin Core maintained out of the
-master git tree.
+This branch is a collection of improvements to Bitcoin Core maintained out of
+the master git tree.
 
 == Patch files ==
 This patchset is distributed as 7 independent patch files:
