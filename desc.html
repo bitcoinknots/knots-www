@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Bitcoin LJR</title>
+<title>Bitcoin Knots</title>
 <style type="text/css">
 img {
 	width: 2em;
@@ -49,132 +49,79 @@ img {
 <body>
 
 <div id="what">
-<h1>What is Bitcoin LJR?</h1>
+<h1>What is Bitcoin Knots?</h1>
 
 <p>
-<strong>Bitcoin LJR</strong> is a derivative of Bitcoin Core (<a href="#history">since 2011 December</a>) with a collection of
-improvements maintained out of the master git tree. It comes in a "functional"
-flavour with only improvements to the software itself, and a "combined" flavour
-which also includes enhancements to relay and mining policy code. More details
-on these changes are <a href="#features">listed below the downloads</a>.
+<strong>Bitcoin Knots</strong> is a derivative of Bitcoin Core (<a href="#history">since 2011 December</a>) with a collection of
+improvements maintained out of the master git tree.
+More details on the enhancements in Bitcoin Knots are <a href="#features">listed below the downloads</a>.
 </p>
 
 <p>
-<strong>Please note:</strong> Bitcoin LJR includes many new features that have not yet been
-tested to the same extent as those included in Bitcoin Core. While I make a
-reasonable effort to ensure they are safe, I cannot guarantee anything. Use of
-Bitcoin LJR is (as with Bitcoin Core) always at your own risk!
+<strong>Please note:</strong>
+Bitcoin Knots includes some new features that have not yet been tested to the same extent as those included in Bitcoin Core.
+While we make a reasonable effort to ensure they are safe, there are no guarantees.
+Use of Bitcoin Knots is (as with Bitcoin Core) always at your own risk!
 </p>
 </div>
 
-<p>
-<strong>For service operators:</strong> Anyone running node(s) that need to send transactions for people other the node's operator should consider avoiding the policy/combined flavour for now. Due to
-its improved spam filtering, it is also impossible to <em>participate</em> in
-such spam. In principle, the decision whether or not to attempt it should
-arguably be up to the end user who owns the bitcoins, and not restricted by
-service operators.
-</p>
-
 <div id="download">
-<h1>Download Bitcoin LJR</h1>
+<h1>Download Bitcoin Knots</h1>
 
-<h2>Latest version: 0.11.2.ljr20151118</h2>
+<h2>Latest version: 0.12.0.knots20160226 (<a href="https://github.com/bitcoinknots/bitcoin/blob/0.12.x-knots/doc/release-notes.md">release notes</a>)</h2>
 
 <p>
-<strong>Please note:</strong> My webserver, like almost all webservers, is not under my exclusive
-physical access, and therefore cannot be trusted to not be compromised. Always
-verify the correct PGP signature (from <a href="http://luke.dashjr.org/myself/luke-jr.asc">my PGP key</a>) on any downloads to avoid risk of malware. Note that my PGP key <a href="https://bitcoin.org/luke-jr.asc">is also hosted on bitcoin.org</a>, so you can (and should, if you don't already have it from another trusted source) download from two independent webservers and ensure they match.
+<strong>Please note:</strong>
+This webserver, like almost all webservers, is not under our exclusive physical access, and therefore cannot be trusted to not be compromised.
+Always verify the correct PGP signature (from <a href="http://luke.dashjr.org/myself/luke-jr.asc">Luke Dashjr's PGP key</a>) on any downloads to avoid risk of malware.
+Note that his PGP key <a href="https://bitcoin.org/luke-jr.asc">is also hosted on bitcoin.org</a>, so you can (and should, if you don't already have it from another trusted source) download from at least two independent webservers and ensure they match.
 </p>
 
 <p>
-<a href="SHA256SUMS.asc"><strong>Click here for SHA256 hashes of all downloads, signed by my PGP key</strong></a>
+<a href="SHA256SUMS.asc"><strong>Click here for SHA256 hashes of all downloads, signed by Luke Dashjr's PGP key</strong></a>
 </p>
 
 <div id="downloads">
 	<div id="download_p">
-		<div class="download_title">Combined flavour</div>
 		<div class="download_item">
-			<a href="ljrPolicy/bitcoin-0.11.2.ljrP20151118-linux64.tar.gz">
+			<a href="files/0.12.x/0.12.0.knots20160226/bitcoin-0.12.0.knots20160226-linux64.tar.gz">
 			<img src="http://luke.dashjr.org/.icons/os/med_linux.png" alt="">
 			Linux<br />
 			64 bit</a>
 			-
-			<a href="ljrPolicy/bitcoin-0.11.2.ljrP20151118-linux32.tar.gz">32 bit</a>
+			<a href="files/0.12.x/0.12.0.knots20160226/bitcoin-0.12.0.knots20160226-linux32.tar.gz">32 bit</a>
 		</div>
 		<div class="download_item">
-			<a href="ljrPolicy/bitcoin-0.11.2.ljrP20151118-osx-unsigned.dmg">
+			<a href="files/0.12.x/0.12.0.knots20160226/bitcoin-0.12.0.knots20160226-osx-unsigned.dmg">
 			<img src="http://luke.dashjr.org/.icons/os/med_osx.png" alt="">
 			Mac OS X<br />
 			dmg</a>
 			-
-			<a href="ljrPolicy/bitcoin-0.11.2.ljrP20151118-osx64.tar.gz">tar.gz</a>
+			<a href="files/0.12.x/0.12.0.knots20160226/bitcoin-0.12.0.knots20160226-osx64.tar.gz">tar.gz</a>
 		</div>
 		<div class="download_item">
-			<a href="ljrPolicy/bitcoin-0.11.2.ljrP20151118-win64-setup-unsigned.exe">
+			<a href="files/0.12.x/0.12.0.knots20160226/bitcoin-0.12.0.knots20160226-win64-setup-unsigned.exe">
 			<img src="http://luke.dashjr.org/.icons/os/med_win.png" alt="">
 			Windows<br />
 			64 bit</a>
 			-
-			<a href="ljrPolicy/bitcoin-0.11.2.ljrP20151118-win32-setup-unsigned.exe">32 bit</a>
+			<a href="files/0.12.x/0.12.0.knots20160226/bitcoin-0.12.0.knots20160226-win32-setup-unsigned.exe">32 bit</a>
 		</div>
 		<div class="download_item">
-			<a href="ljrPolicy/bitcoin-0.11.2.ljrP20151118-win64.zip">
+			<a href="files/0.12.x/0.12.0.knots20160226/bitcoin-0.12.0.knots20160226-win64.zip">
 			<img src="http://luke.dashjr.org/.icons/os/med_win.png" alt="">
 			Windows (zip)<br />
 			64 bit</a>
 			-
-			<a href="ljrPolicy/bitcoin-0.11.2.ljrP20151118-win32.zip">32 bit</a>
+			<a href="files/0.12.x/0.12.0.knots20160226/bitcoin-0.12.0.knots20160226-win32.zip">32 bit</a>
 		</div>
 		<div class="download_item">
-			<a href="https://github.com/luke-jr/bitcoin/tree/0.11.x-ljrP">
+			<a href="https://github.com/bitcoinknots/bitcoin/">
 			<img src="http://luke.dashjr.org/.icons/os/med_opensource.svg" alt="">
 			Source code<br />
 			GitHub</a>
 			-
-			<a href="bitcoin-0.11.2.ljr20151118.patches.txz">patches</a>
-		</div>
-	</div>
-	<div id="download_f">
-		<div class="download_title">Functional only</div>
-		<div class="download_item">
-			<a href="ljrFunctional/bitcoin-0.11.2.ljrF20151118-linux64.tar.gz">
-			<img src="http://luke.dashjr.org/.icons/os/med_linux.png" alt="">
-			Linux<br />
-			64 bit</a>
-			-
-			<a href="ljrFunctional/bitcoin-0.11.2.ljrF20151118-linux32.tar.gz">32 bit</a>
-		</div>
-		<div class="download_item">
-			<a href="ljrFunctional/bitcoin-0.11.2.ljrF20151118-osx-unsigned.dmg">
-			<img src="http://luke.dashjr.org/.icons/os/med_osx.png" alt="">
-			Mac OS X<br />
-			dmg</a>
-			-
-			<a href="ljrFunctional/bitcoin-0.11.2.ljrF20151118-osx64.tar.gz">tar.gz</a>
-		</div>
-		<div class="download_item">
-			<a href="ljrFunctional/bitcoin-0.11.2.ljrF20151118-win64-setup-unsigned.exe">
-			<img src="http://luke.dashjr.org/.icons/os/med_win.png" alt="">
-			Windows<br />
-			64 bit</a>
-			-
-			<a href="ljrFunctional/bitcoin-0.11.2.ljrF20151118-win32-setup-unsigned.exe">32 bit</a>
-		</div>
-		<div class="download_item">
-			<a href="ljrFunctional/bitcoin-0.11.2.ljrF20151118-win64.zip">
-			<img src="http://luke.dashjr.org/.icons/os/med_win.png" alt="">
-			Windows (zip)<br />
-			64 bit</a>
-			-
-			<a href="ljrFunctional/bitcoin-0.11.2.ljrF20151118-win32.zip">32 bit</a>
-		</div>
-		<div class="download_item">
-			<a href="https://github.com/luke-jr/bitcoin/tree/0.11.x-ljrF">
-			<img src="http://luke.dashjr.org/.icons/os/med_opensource.svg" alt="">
-			Source code<br />
-			GitHub</a>
-			-
-			<a href="bitcoin-0.11.2.ljr20151118.patches.txz">patches</a>
+			<a href="files/0.12.x/0.12.0.knots20160226/bitcoin-0.12.0.knots20151118.patches.txz">patches</a>
 		</div>
 	</div>
 </div>
@@ -188,23 +135,22 @@ Features that will be available in the next release of Bitcoin Core are highligh
 </p>
 
 <div id="syslibs">
-<h2>Packaging cleanups ("syslibs", included in both flavours)</h2>
+<h2>Packaging cleanups ("syslibs")</h2>
 
 <p>
-Adds options to build Bitcoin Core against system LevelDB and libsecp256k1
-libraries (see ./configure --help for usage).
+Adds options to build using system LevelDB, libsecp256k1, and UniValue
+libraries, and/or without the libevent library (see ./configure --help for usage).
 </p>
 
 <p>
-Please note this may be dangerous and make theft from you possible if used with
-versions of the libraries which have not been audited to meet the bug-for-bug
-compatibility required by Bitcoin's consensus protocol. The patch leaves these
-options disabled by default for this reason.
+Please note this may be dangerous and make theft from you possible if used with versions of
+the LevelDB or libsecp256k1
+libraries which have not been audited to meet the bug-for-bug compatibility required by Bitcoin's consensus protocol.
+These options are disabled by default for this reason.
 </p>
 
 <p>
-It also extends the OpenRC init script to be more configurable, and adds options
-to disable building bitcoin-cli or bitcoin-tx individually.
+It also adds options to disable building bitcoin-cli or bitcoin-tx individually, fixes compatibility with LibreSSL, and avoids involving foreign git trees in the build.
 </p>
 
 <p>
@@ -215,121 +161,60 @@ See also:
 <li><a href="https://github.com/bitcoin/bitcoin/pull/2241">Support for building against system LevelDB</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/5416">configure: Add unsupported --with-system-libsecp256k1 configure flag</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/5618">configure: Make it possible to build only one of bitcoin-cli or bitcoin-tx</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/6401">Add BITCOIND_SIGTERM_TIMEOUT to OpenRC init scripts</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7339">Support building without libevent</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7349">Build against system UniValue when available</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7485">Use system univalue by default</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7520">LibreSSL doesn't define OPENSSL_VERSION, use LIBRESSL_VERSION_TEXT instead</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7522">Bugfix: Only use git for build info if the repository is actually the right one</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7586">fixes/refactoring for building against LibreSSL</a></li>
 </ul>
 </div>
 
 
-<div id="ljrF">
-<h2>Functional enhancements ("ljrF", included in both flavours)</h2>
+<div id="knotsF">
+<h2>Functional and policy enhancements</h2>
 
-This is a collection of fixes and functionality improvements:
+This is a collection of fixes, and various other improvements:
 <ul>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/553">Parse URIs with non-BTC amounts</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/559">-acceptnonstdtxn option to skip "non-standard transaction" checks</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/929">Support for Tonal Bitcoin units (ᵇTBC, ˢTBC, and TBC)</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/1918">Send 'mempool' P2P command at the start of each P2P session</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/2383">Add user interface to set dust limit and filtered addresses</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/5288">Added -whiteconnections=<n> option</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/5486">[REST] JSON support for /rest/headers</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/5574">Expose GUI labels in RPC as comments</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/5861">Restore ability to display addresses in GUI</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/5891">[Qt] support for persisted rpc console history</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/5913">Add absurdly high fee message to validation state</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/5916">add key generation type</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/5927">Reduce checkpoints' effect on consensus.</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/5936">[RPC] Add optional locktime to createrawtransaction</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/5987">Bugfix: Fix testnet-in-a-box use case</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6013">[REST] Add memory pool API</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6088">fundrawtransaction</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6130">Do not inv old or missing blocks when pruning</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6133">Fix various warnings</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6149">Buffer log messages and explicitly open logs</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6158">Add setban/listbanned RPC commands</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6177">Prevent block.nTime from decreasing</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/6178">Refactor EvalScript into a CScriptExecution class, so single-stepping can be done</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6209">[Qt] extend rpc console peers tab</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6217">[Qt] disconnect peers from peers tab via context menu</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6224">Be even stricter in processing unrequested blocks</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6247">Add getblockheader RPC call</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6257">Add `paytxfee` and `errors` JSON fields where appropriate</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6262">Return all available information via RPC call "validateaddress"</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6271">New RPC command disconnectnode</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/6306">Prevent peer flooding inv request queue (redux)</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6307">rpcban fixes</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6310">banlist.dat: store banlist on disk</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6315">[Qt] allow banning and unbanning over UI->peers table</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6329">acceptnonstdtxn option to skip (most) "non-standard transaction" checks, for testnet/regtest only</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/6344">Avoid "Unknown command" messages when receiving getaddr on outbound c…</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6346">Add OP_RETURN support in createrawtransaction RPC call, add tests.</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6356">Delay initial pruning until after wallet init</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6361">Use real number of cores for default -par, ignore virtual cores</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6362">Fix null id in RPC response during startup</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/6371">banlist updates</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6388">rpc: Implement random-cookie based authentication</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/6403">Option -limitunconfdepth to reject transactions dependent on a long chain of unconfirmed ones</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6417">[QA] fix possible reorg issue in (fund)rawtransaction(s).py RPC test</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6464">Always clean up manual transaction prioritization</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6523">Add p2p-fullblocktest.py</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6532">Update init doc to mention cookie authentication</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6539">typofix - https://github.com/vlajos/misspell_fixer</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6621">added org.bitcoin.bitcoind.plist for launchd (OS X)</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6863">[Test Suite] Fix test for null tx input</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6870">[trivial] Misc cleanup and translations</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6881">Debug: Add option for microsecond precision in debug.log</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6894">[Tests] Fix BIP65 p2p test</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6895">Update to my new key</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6905">Use constants and minor fixes by luke-jr</a> (fixes only)</li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6906">Reject invalid pubkeys when reading ckey items from the wallet.</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6970">Fix crash in validateaddress with -disablewallet</a> (unit test only)</li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6974">Always allow getheaders from whitelisted peers</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6978">Alternative fix for #6248 (qt+fPIE)</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6991">Minor: Clarify 'fee' field in fundrawtransaction help text</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7000">[Qt] add shortcurts for debug-/console-window</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7004">update jonasschnellis gpg key</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7010">Better error message for fundrawtransaction w/ empty vout</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7013">Remove LOCK(cs_main) from decodescript</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7023">Fixed integer comparison warning.</a></li>
-</ul>
-</div>
-
-
-<div id="zeromq">
-<h2>ZeroMQ support (included in both flavours)</h2>
-<ul>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6103">Add ZMQ support. Report blocks and transactions via ZMQ.</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6685">fix rpc-tests.sh</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6736">Require ZMQ version 4.x and update/cleanup zmq docs</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6739">Trivial: start the help texts with lowercase</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6743">autotools: move checking for zmq library to common area in configure.ac</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6768">zmq: update docs to reflect feature is compiled in automatically</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6779">build: Make use of ZMQ_CFLAGS</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6810">zmq: point API link to 4.0 as that is what we are conforming to</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6927">Fix ZMQ Notification initialization and shutdown</a></li>
-</ul>
-</div>
-
-
-<div id="cpfp">
-<h2>Child-pays-for-parent ("cpfp", only included in combined flavour)</h2>
-
-<p>
-This is a policy change that makes mining resolve transaction dependencies when
-considering fees. See also:
-</p>
-
-<ul>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/1647">CreateNewBlock: Child-pays-for-parent / Add transaction fee later</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/6996">Add preciousblock RPC</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7061">[Wallet] add rescanblockchain <height> RPC command</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7107">Qt: Add network port input box to GUI settings</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7132">Add option to opt into full-RBF when sending funds</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7142">Travis: Test build against system Qt4 and without libevent</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7149">Bugfix: Correctly calculate priority when inputs are mined after dependent transactions enter the memory pool</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7154">[Qt] add InMempool() info to transaction details</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7156">rpc: remove cs_main lock from `createrawtransaction`</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7159">[RPC] Add RBF opt-in possibilities to rawtx functions</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7192">Unify product name to as few places as possible</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7219">Make RBF policies optional</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7262">Reduce inefficiency of GetAccountAddress()</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7292">[RPC] Expose ancestor/descendant information over RPC</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7313">[trivial] fixing multiple typos</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7350">Banlist updates</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7483">Render icons from SVG</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7487">Workaround Travis-side CI issues</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7509">Common argument defaults for NODE_BLOOM stuff and -wallet</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7510">Read/write bitcoin_rw.conf for exposing shared Daemon/GUI options in the GUI</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7518">Add change options to fundrawtransaction</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7533">RPC: sendrawtransaction: Allow the user to ignore/override specific rejections</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7550">rpc: Input-from-stdin mode for bitcoin-cli</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/7551">Add importmulti RPC call</a></li>
 </ul>
 </div>
 
 
 <div id="spamfilter">
-<h2>Improved spam filter (only included in combined flavour)</h2>
+<h2>Improved pattern-matching spam filter</h2>
 
 <p>
-This is a policy change that improves the spam filtering capabilities of Bitcoin
-Core, notably including pattern matching for notorious spammer scripts.
+Bitcoin Knots includes a policy change that improves the spam filtering capabilities using matching of patterns identified in spam.
 </p>
 
 <p>
@@ -347,60 +232,11 @@ Specifically, spam created by the following are identified and ignored:
 </ul>
 
 <p>
-(Note that the organizations and people <em>responsible</em> for the spam are <em>not</em> filtered, only the spam itself.)
+Note that the organizations and people <em>responsible</em> for the spam are <em>not</em> filtered, only the spam itself.
+This feature can be disabled using the -spamfilter=0 command-line option, or in the GUI Options dialog.
 </p>
 </div>
 
-
-<div id="dcmp">
-<h2>Data carrier multi-push ("dcmp", only included in combined flavour)</h2>
-
-<p>
-This is a policy change by Peter Todd that enables multiple data pushes in
-datacarrier transactions. See also:
-</p>
-<ul>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/6424">Accept any sequence of PUSHDATAs in OP_RETURN outputs</a></li>
-</ul>
-</div>
-
-
-<div id="rbf">
-<h2>Replace-by-fee ("rbf", <u>only available as a source code patch</u>)</h2>
-
-<p>
-This is a policy change by Peter Todd that replaces transactions if the new one
-has a sufficiently higher fee. See also:
-</p>
-<ul>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/4298">Add replace-by-fee logic to the mempool</a></li>
-</ul>
-
-<p>
-Note that this patch is Peter Todd's replace-by-fee-v0.11.2 git branch, slightly
-hand-modified to cleanly apply to both vanilla v0.11.2 as well as derivatives
-patched with this patchset.
-</p>
-</div>
-
-</div>
-
-
-<div id="git">
-<h1>Git access</h1>
-
-<p>
-All these are also available via git from git://github.com/luke-jr/bitcoin.git
-in the following branches:
-</p>
-<ul>
-<li><a href="https://github.com/luke-jr/bitcoin/tree/0.11.x-syslibs">0.11.x-syslibs
-<li><a href="https://github.com/luke-jr/bitcoin/tree/0.11.x-ljrF">0.11.x-ljrF</a> (includes syslibs, ljrF, and zeromq)</li>
-<li><a href="https://github.com/luke-jr/bitcoin/tree/0.11.x-ljrP">0.11.x-ljrP</a> (includes everything except rbf)</li>
-<li><a href="https://github.com/luke-jr/bitcoin/tree/zeromq-0.11.x">zeromq-0.11.x</a></li>
-<li><a href="https://github.com/luke-jr/bitcoin/tree/minedeps">minedeps</a> (cpfp)</li>
-<li><a href="https://github.com/luke-jr/bitcoin/tree/spamfilter">spamfilter</a></li>
-</ul>
 </div>
 
 
@@ -408,8 +244,9 @@ in the following branches:
 <h1>History</h1>
 
 <p>
-Bitcoin LJR began in 2011 December as Bitcoin Next-Test, a derivative of Bitcoin Core's "master" branch with upcoming and proposed features merged in manner as unbiased as possible toward the changes themselves.
+Bitcoin Knots began in 2011 December as Bitcoin Next-Test, a derivative of Bitcoin Core's "master" branch with upcoming and proposed features merged in manner as unbiased as possible toward the changes themselves.
 In 2014, due to time constraints and a desire to maintain a more stable and well-maintained derivative, I began instead to base the branch off the latest stable release, and include only modifications that both looked reasonably safe and I did not personally consider problematic or flawed; along with this change, since it was no longer an unbiased derivative, I renamed it to Bitcoin Core "ljr", and later Bitcoin LJR.
+With 0.12 in 2016, the project is once again renamed (to "Bitcoin Knots") and has a goal of being a general enhanced derivative of the reference Bitcoin Core software.
 </p>
 </div>
 
