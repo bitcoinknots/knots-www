@@ -10,18 +10,18 @@ img.os {
 	height: 3em;
 	float: left;
 }
-#downloads {
+.downloads {
 	float: left;
 	margin-right: 1em;
 	margin-bottom: 1em;
 }
-#downloads > div {
+.downloads > div {
 	display: inline-block;
 	border-radius: 1ex;
 	padding: 2ex;
 	width: 24ex;
 }
-#download_p {
+.download_p {
 	background-color: #bbffbb;
 	border: 0.5ex solid #00ff00;
 	background-image: url("knots-t.svg");
@@ -29,14 +29,31 @@ img.os {
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 }
-#download_f {
+.download_rc {
 	margin-left: 1em;
-	background-color: #ffbbff;
-	border: 0.5ex solid #ff00ff;
+	background-color: #ffddbb;
+	border: 0.5ex solid #ffbb00;
 }
 .download_title {
 	font-weight: bold;
 	font-size: 125%;
+}
+.download_ver span {
+	font-weight: bold;
+	display: block;
+	text-align: center;
+}
+.download_ver {
+	margin-bottom: 0.5ex;
+}
+.downloads .relnotes {
+	display: block;
+	text-align: center;
+}
+.downloads .sigs {
+	display: block;
+	text-align: center;
+	font-weight: bold;
 }
 .download_item {
 	margin-top: 1ex;
@@ -46,11 +63,11 @@ img.os {
 .download_item img {
 	padding-right: 1ex;
 }
-.download_item a {
+.downloads a {
     color: #000080;
     text-decoration: none;
 }
-.download_item a:hover {
+.downloads a:hover {
     text-decoration: underline;
 }
 #features {
@@ -85,8 +102,18 @@ Use of Bitcoin Knots is (as with Bitcoin Core) always at your own risk!
 <div id="download">
 <h1>Download Bitcoin Knots</h1>
 
-<div id="downloads">
-	<div id="download_p">
+<div class="downloads">
+	<div class="download_p">
+		<div class="download_ver">
+			<span class="ver_class">Latest version</span>
+			<span class="ver_id">0.13.2.knots20170102</span>
+		</div>
+		<div class="relnotes">
+			<a href="https://github.com/bitcoinknots/bitcoin/blob/v0.13.2.knots20170102/doc/release-notes.md">release notes</a>
+		</div>
+		<div class="sigs">
+			<a href="files/0.13.x/0.13.2.knots20170102/SHA256SUMS.asc">digital signatures</a>
+		</div>
 		<div class="download_item">
 			<a href="files/0.13.x/0.13.2.knots20170102/bitcoin-0.13.2.knots20170102-x86_64-linux-gnu.tar.gz">
 			<img class="os" src="/.icons/os/med_linux.png" alt="">
@@ -133,10 +160,66 @@ Use of Bitcoin Knots is (as with Bitcoin Core) always at your own risk!
 		</div>
 	</div>
 </div>
+<div class="downloads" style="float: right">
+	<div class="download_p download_rc">
+		<div class="download_ver">
+			<span class="ver_class">Pre-release version</span>
+			<span class="ver_id">0.14.0.knots20170218.rc1</span>
+		</div>
+		<div class="relnotes">
+			<a href="https://github.com/bitcoinknots/bitcoin/blob/v0.14.0.knots20170218.rc1/doc/release-notes.md">release notes</a>
+		</div>
+		<div class="sigs">
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/SHA256SUMS.asc">digital signatures</a>
+		</div>
+		<div class="download_item">
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/bitcoin-0.14.0.knots20170218.rc1-x86_64-linux-gnu.tar.gz">
+			<img class="os" src="/.icons/os/med_linux.png" alt="">
+			Linux<br />
+			x86_64</a>
+			-
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/bitcoin-0.14.0.knots20170218.rc1-i686-pc-linux-gnu.tar.gz">x86_32</a>
+			<br />
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/bitcoin-0.14.0.knots20170218.rc1-aarch64-linux-gnu.tar.gz">aarch64</a>
+			-
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/bitcoin-0.14.0.knots20170218.rc1-arm-linux-gnueabihf.tar.gz">arm</a>
+		</div>
+		<div class="download_item">
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/bitcoin-0.14.0.knots20170218.rc1-osx-unsigned.dmg">
+			<img class="os" src="/.icons/os/med_osx.png" alt="">
+			Mac OS X<br />
+			dmg</a>
+			-
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/bitcoin-0.14.0.knots20170218.rc1-osx64.tar.gz">tar.gz</a>
+		</div>
+		<div class="download_item">
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/bitcoin-0.14.0.knots20170218.rc1-win64-setup-unsigned.exe">
+			<img class="os" src="/.icons/os/med_win.png" alt="">
+			Windows<br />
+			x86_64</a>
+			-
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/bitcoin-0.14.0.knots20170218.rc1-win32-setup-unsigned.exe">x86_32</a>
+		</div>
+		<div class="download_item">
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/bitcoin-0.14.0.knots20170218.rc1-win64.zip">
+			<img class="os" src="/.icons/os/med_win.png" alt="">
+			Windows (zip)<br />
+			x86_64</a>
+			-
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/bitcoin-0.14.0.knots20170218.rc1-win32.zip">x86_32</a>
+		</div>
+		<div class="download_item">
+			<a href="https://github.com/bitcoinknots/bitcoin/">
+			<img class="os" src="/.icons/os/med_opensource.svg" alt="">
+			Source code<br />
+			GitHub</a>
+			-
+			<a href="files/0.14.x/0.14.0.knots20170218.rc1/bitcoin-0.14.0.knots20170218.rc1.patches.txz">patches</a>
+		</div>
+	</div>
 </div>
 
-<h2>Latest version: 0.13.2.knots20170102 (<a href="https://github.com/bitcoinknots/bitcoin/blob/v0.13.2.knots20170102/doc/release-notes.md">release notes</a>)</h2>
-
+<h2>Security notice</h2>
 <p>
 <strong>Please note:</strong>
 This webserver, like almost all webservers, is not under our exclusive physical access, and therefore cannot be trusted to not be compromised.
@@ -145,8 +228,11 @@ Note that his PGP key <a href="https://bitcoin.org/luke-jr.asc">is also hosted o
 </p>
 
 <p>
-<a href="files/0.13.x/0.13.2.knots20170102/SHA256SUMS.asc"><strong>Click here for SHA256 hashes of all downloads, signed by Luke Dashjr's PGP key</strong></a>
+SHA256 hashes of all downloads, signed by Luke Dashjr's PGP key, are available under the "digital signatures" link in the download box.
+If this link is missing, broken, or fails to verify, do not trust the downloaded files, and <a href="mailto:luke_bcknots_securitybreach@dashjr.org">contact him</a> immediately.
 </p>
+
+</div>
 
 <div id="features">
 <h1>Enhancement sets</h1>
