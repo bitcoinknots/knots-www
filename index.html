@@ -34,6 +34,11 @@ img.os {
 	background-color: #ffddbb;
 	border: 0.5ex solid #ffbb00;
 }
+.download_old {
+	margin-left: 1em;
+	background-color: #bbddff;
+	border: 0.5ex solid #00bbff;
+}
 .download_title {
 	font-weight: bold;
 	font-size: 125%;
@@ -106,6 +111,72 @@ Use of Bitcoin Knots is (as with Bitcoin Core) always at your own risk!
 	<div class="download_p">
 		<div class="download_ver">
 			<span class="ver_class">Latest version</span>
+			<span class="ver_id">0.14.2.knots20170618</span>
+		</div>
+		<div class="relnotes">
+			<a href="https://github.com/bitcoinknots/bitcoin/blob/v0.14.2.knots20170618/doc/release-notes.md">release notes</a>
+		</div>
+		<div class="sigs">
+			<a href="files/0.14.x/0.14.2.knots20170618/SHA256SUMS.asc">digital signatures</a>
+		</div>
+		<div class="download_item">
+			<a href="files/0.14.x/0.14.2.knots20170618/bitcoin-0.14.2.knots20170618-x86_64-linux-gnu.tar.gz">
+			<img class="os" src="/.icons/os/med_linux.png" alt="">
+			Linux<br />
+			x86_64</a>
+			-
+			<a href="files/0.14.x/0.14.2.knots20170618/bitcoin-0.14.2.knots20170618-i686-pc-linux-gnu.tar.gz">x86_32</a>
+			<br />
+			<a href="files/0.14.x/0.14.2.knots20170618/bitcoin-0.14.2.knots20170618-aarch64-linux-gnu.tar.gz">aarch64</a>
+			-
+			<a href="files/0.14.x/0.14.2.knots20170618/bitcoin-0.14.2.knots20170618-arm-linux-gnueabihf.tar.gz">arm</a>
+		</div>
+		<div class="download_item">
+			<a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoinknots">
+			<img class="os" src="/.icons/os/med_ubuntu.png" alt="">
+			Ubuntu<br />
+			PPA
+			</a>
+		</div>
+		<div class="download_item">
+			<a href="files/0.14.x/0.14.2.knots20170618/bitcoin-0.14.2.knots20170618-osx-unsigned.dmg">
+			<img class="os" src="/.icons/os/med_osx.png" alt="">
+			Mac OS X<br />
+			dmg</a>
+			-
+			<a href="files/0.14.x/0.14.2.knots20170618/bitcoin-0.14.2.knots20170618-osx64.tar.gz">tar.gz</a>
+		</div>
+		<div class="download_item">
+			<a href="files/0.14.x/0.14.2.knots20170618/bitcoin-0.14.2.knots20170618-win64-setup-unsigned.exe">
+			<img class="os" src="/.icons/os/med_win.png" alt="">
+			Windows<br />
+			x86_64</a>
+			-
+			<a href="files/0.14.x/0.14.2.knots20170618/bitcoin-0.14.2.knots20170618-win32-setup-unsigned.exe">x86_32</a>
+		</div>
+		<div class="download_item">
+			<a href="files/0.14.x/0.14.2.knots20170618/bitcoin-0.14.2.knots20170618-win64.zip">
+			<img class="os" src="/.icons/os/med_win.png" alt="">
+			Windows (zip)<br />
+			x86_64</a>
+			-
+			<a href="files/0.14.x/0.14.2.knots20170618/bitcoin-0.14.2.knots20170618-win32.zip">x86_32</a>
+		</div>
+		<div class="download_item">
+			<a href="https://github.com/bitcoinknots/bitcoin/tree/v0.14.2.knots20170618">
+			<img class="os" src="/.icons/os/med_opensource.svg" alt="">
+			Source code<br />
+			GitHub</a>
+			-
+			<a href="files/0.14.x/0.14.2.knots20170618/bitcoin-0.14.2.knots20170618.patches.txz">patches</a>
+		</div>
+	</div>
+</div>
+
+<div class="downloads" style="float: right">
+	<div class="download_p download_old">
+		<div class="download_ver">
+			<span class="ver_class">Previous version</span>
 			<span class="ver_id">0.14.1.knots20170420</span>
 		</div>
 		<div class="relnotes">
@@ -219,7 +290,7 @@ See also:
 <li><a href="https://github.com/bitcoin/bitcoin/pull/5618">configure: Make it possible to build only one of bitcoin-cli or bitcoin-tx</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/7339">Support building without libevent</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/7485">Use system univalue by default</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/7522">Bugfix: Only use git for build info if the repository is actually the right one</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/7522">Bugfix: Only use git for build info if the repository is actually the right one</a></li>
 </ul>
 </div>
 
@@ -243,14 +314,14 @@ This is a collection of fixes, and various other improvements:
 <li><a href="https://github.com/bitcoin/bitcoin/pull/7483">Render icons from SVG</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/7510">Read/write bitcoin_rw.conf for exposing shared Daemon/GUI options in the GUI</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/7533">RPC: sendrawtransaction: Allow the user to ignore/override specific rejections</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/8384">Add witness data output to TxInError messages</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/8384">Add witness data output to TxInError messages</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/8501">Add mempool statistics collector</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/8550">[Qt] Add interactive mempool graph</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/8694">Basic multiwallet support</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/8704">[RPC] Transaction details in getblock</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/8694">Basic multiwallet support</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/8704">[RPC] Transaction details in getblock</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/8751">RPC: Add parameter to addmultisigaddress / createmultisig to sort public keys</a></li>
 <li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/8775">RPC refactoring: Access wallet using new GetWalletForJSONRPCRequest</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/8952">Add query options to listunspent RPC call</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/8952">Add query options to listunspent RPC call</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/9017">Enable various p2sh-p2wpkh functionality</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/9152">Wallet/RPC: sweepprivkeys method to scan UTXO set and send to local wallet</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/9245">Drop IO priority to idle while reading blocks for getblock requests</a></li>
@@ -263,25 +334,38 @@ This is a collection of fixes, and various other improvements:
 <li><a href="https://github.com/bitcoin/bitcoin/pull/9504">[RPC] dumpmasterprivkey command</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/9524">rpc: Don't FlushStateToDisk when pruneblockchain(0)</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/9549">[net] Avoid possibility of NULL pointer dereference in MarkBlockAsInFlight(...)</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/9571">RPC: getblockchaininfo returns BIP signaling statistics</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/9571">RPC: getblockchaininfo returns BIP signaling statistics</a></li>
 <li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/9592">[Qt] Add checkbox in the GUI to opt-in to RBF when creating a transaction</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/9622">[rpc] listsinceblock should include lost transactions when parameter is a reorg'd block</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/9672">Opt-into-RBF for RPC &amp; bitcoin-tx</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/9672">Opt-into-RBF for RPC &amp; bitcoin-tx</a></li>
 <li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/9724">Qt/Intro: Add explanation of IBD process</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/9740">Add friendly output to dumpwallet</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/9740">Add friendly output to dumpwallet</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/9749">If -spkreuse=0, ensure transactions in mempool always have unique scriptPubKeys</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/9849">Qt: Network Watch tool</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/9853">Fix error codes from various RPCs</a></li>
 <li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/9890">Add a button to open the config file in a text editor</a></li>
 <li><a href="https://github.com/bitcoin/bitcoin/pull/9991">listreceivedbyaddress Filter Address</a></li>
 <li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10143">[net] Allow disconnectnode RPC to be called with node id</a></li>
 <li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10156">Fix for issues with startup and multiple monitors on windows.</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/10196">Bugfix: PrioritiseTransaction updates the mempool tx counter</a></li>
-<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10231">[Qt] Reduce a significant cs_main lock freeze</a></li>
-<li><a href="https://github.com/bitcoin/bitcoin/pull/10234">[net] listbanned RPC and QT should show correct banned subnets</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10196">Bugfix: PrioritiseTransaction updates the mempool tx counter</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10234">[net] listbanned RPC and QT should show correct banned subnets</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10250">Fix some empty vector references</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10265">[wallet] [moveonly] Check non-null pindex before potentially referencing</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/10275">[rpc] Allow fetching tx directly from specified block in getrawtransaction</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/10282">Expire bitcoind &amp; bitcoin-qt 1-2 years after its last change</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10290">Add -stopatheight for benchmarking</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/10593">Relax punishment for peers relaying invalid blocks and headers</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/10594">Bugfix: net: Apply whitelisting criteria to outgoing connections</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10308">[wallet] Securely erase potentially sensitive keys/values</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10328">Update contrib/debian to latest Ubuntu PPA upload.</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10376">[tests] fix disconnect_ban intermittency</a></li>
+<li class="merged"><a href="https://github.com/bitcoin/bitcoin/pull/10445">Fix and add test for empty chain and reorg consistency for gettxoutsetinfo.</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/10532">-bip148 option</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/10595">Bugfix: RPC/Mining: Use pre-segwit sigops and limits, when working with non-segwit GBT clients</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/pull/10615">RPC: Allow rpcauth configs to specify a 4th parameter naming a specific wallet (multiwallet RPC support)</a></li>
 <li><a href="https://github.com/bitcoinknots/bitcoin/commit/38b3fca5a90b7f3e7dd8e0ad2d2770ac094b83a5">Make most policy options configurable in GUI Options, and add "corepolicy" option to use Bitcoin Core defaults</a></li>
 <li><a href="https://github.com/bitcoinknots/bitcoin/commit/bde01d519b55bc9bd77db704dd23875543b0078b">Trivially map blockmaxsize to blockmaxweight while segwit is unactivated</a></li>
 <li><a href="https://github.com/bitcoinknots/bitcoin/commit/aba2a0e7234e39b00023ab2d50c97ae31741c4b3">Restore original bytespersigop as bytespersigopstrict</a></li>
-<li><a href="https://github.com/bitcoinknots/bitcoin/commit/f582ed6d7c2e6da6e3a3f9485b73ebfd88259f38">Multiwallet RPC support</a></li>
 <li><a href="https://github.com/bitcoinknots/bitcoin/commit/c0f1fbe1bc6b4c4753082724c17d987b06be0172">Multiwallet GUI support</a></li>
 </ul>
 </div>
