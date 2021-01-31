@@ -5,6 +5,54 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <title>Bitcoin Knots</title>
 <style type="text/css">
+body {
+	padding-top: 3em;
+}
+#menu {
+	margin: 0;
+	display: block;
+	background-color: #bbffbb;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	xheight: 4em;
+	padding: 0;
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+.anchor {
+	position: relative;
+	top: -5em;
+}
+#logo {
+	position: absolute;
+	background-color: #bbffbb;
+	padding: 0 1ex;
+	display: block;
+	border-bottom: 1px solid black;
+	border-bottom-right-radius: 1em;
+	float: left;
+}
+#menu ul {
+	margin: 0 calc(192px + 2ex);
+	list-style-type: none;
+}
+#menu li {
+	display: inline-block;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 0;
+}
+#menu li a {
+	display: inline-block;
+	margin: 0;
+	padding: 1.5em;
+	color: black;
+	text-decoration: none;
+}
+#menu li a:hover {
+	background-color: #88ee88;
+}
 img.os {
 	padding-top: 0.5ex;
 	width: 5em;
@@ -100,16 +148,35 @@ img.os {
 </head>
 <body>
 
-<img src="/knots-long.png" id="logo"/>
+<div id="menu">
+<img src="knots-long.png" id="logo"/>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#download">Download</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
 
-<div id="what">
-<h1>What is Bitcoin Knots?</h1>
-
-<p>
-<strong>Bitcoin Knots</strong> is a derivative of Bitcoin Core (<a href="#history">since 2011 December</a>) with a collection of
-improvements backported from and sometimes maintained outside of the master git tree.
-More details on the enhancements in Bitcoin Knots are <a href="#features">listed below the downloads</a>.
+<span class="anchor" id="about"></span>
+<div style="font-size: 200%;">
+<p style="text-align: center; font-family: sans-serif;">
+Bitcoin Knots is a combined Bitcoin node and wallet.<br/>
+Not only is it easy to use, but it also ensures bitcoins<br/>
+you receive are both real bitcoins and really yours.
 </p>
+
+<img src="sample-overview.png" style="max-width: calc(50% - 4ex); float: left; padding: 0 2ex;"/>
+<div style="margin-left: 50%;">
+Features:
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</div>
+<div style="clear: both"></div>
 </div>
 
 <div id="download">
