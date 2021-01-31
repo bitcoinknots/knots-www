@@ -7,6 +7,7 @@
 <style type="text/css">
 body {
 	padding-top: 3em;
+	text-align: justify;
 }
 #menu {
 	margin: 0;
@@ -53,12 +54,127 @@ body {
 #menu li a:hover {
 	background-color: #88ee88;
 }
-img.os {
-	padding-top: 0.5ex;
-	width: 5em;
-	height: 5em;
-	float: left;
+/* mainbutton style:
+	Copyright 2013 - 2016 The Bitcoin.org Project.
+	Copyright 2017 The BitcoinCore.org Project.
+	Licensed under the MIT License (MIT) available on http://opensource.org/licenses/MIT
+*/
+.mainbutton{
+        text-align:center;
 }
+.mainbutton a,
+.mainbutton a:link,
+.mainbutton a:visited,
+.mainbutton a:active{
+        font-family:'Ubuntu', sans-serif;
+        font-weight:400;
+        font-size:150%;
+        text-shadow:0 2px 6px rgba(0,0,0,0.6);
+        text-align:left;
+        display:inline-block;
+        background-color:#2c6fad;
+        border:1px solid #20598f;
+        background-image:-o-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:-moz-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:-webkit-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:-ms-linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        background-image:linear-gradient(bottom, #20598f 14%, #2c6fad 70%);
+        color:#fff;
+        padding:15px 20px 15px 8px;
+        /* margin:40px 0 40px 0; */
+        margin: 1ex 0;
+        -webkit-border-radius:12px;
+        -moz-border-radius:12px;
+        border-radius:12px;
+}
+.mainbutton a:hover{
+        background-image:none;
+        color:#fff;
+}
+.mainbutton img{
+        height:42px;
+        width:42px;
+        margin-right: 8px;
+        display: inline-block;
+        vertical-align: middle;
+}
+.mainbutton span{
+        display: inline-block;
+        vertical-align: middle;
+}
+.signaturebutton a {
+	padding: 7px 10px;
+	background-color:#6fad2c;
+	border:1px solid #598f20;
+	background-image:-o-linear-gradient(bottom, #598f20 14%, #6fad2c 70%);
+	background-image:-moz-linear-gradient(bottom, #598f20 14%, #6fad2c 70%);
+	background-image:-webkit-linear-gradient(bottom, #598f20 14%, #6fad2c 70%);
+	background-image:-ms-linear-gradient(bottom, #598f20 14%, #6fad2c 70%);
+	background-image:linear-gradient(bottom, #598f20 14%, #6fad2c 70%);
+}
+.signaturebutton img {
+	height:32px;
+	width:32px;
+}
+.advancedbutton a {
+	padding: 7px 10px;
+	background-color:#ad6f2c;
+	border:1px solid #8f5920;
+	background-image:-o-linear-gradient(bottom, #8f5920 14%, #ad6f2c 70%);
+	background-image:-moz-linear-gradient(bottom, #8f5920 14%, #ad6f2c 70%);
+	background-image:-webkit-linear-gradient(bottom, #8f5920 14%, #ad6f2c 70%);
+	background-image:-ms-linear-gradient(bottom, #8f5920 14%, #ad6f2c 70%);
+	background-image:linear-gradient(bottom, #8f5920 14%, #ad6f2c 70%);
+}
+
+h2 {
+	text-align: center;
+	font-size: 150%;
+}
+h3 {
+	text-align: center;
+	font-size: 80%;
+	margin: 0;
+	margin-bottom: 1em;
+}
+
+#other_downloads {
+	margin: auto;
+	border-radius: 1ex;
+	padding: 2ex;
+	width: 40ex;
+}
+.download_item {
+	text-align: center;
+}
+.download_item a,
+.download_item a:link,
+.download_item a:visited,
+.download_item a:active {
+	display: inline-block;
+	text-align: left;
+	color: black;
+}
+.download_item img {
+	display: inline-block;
+	vertical-align: middle;
+	height: 3em;
+	margin-right: 8px;
+}
+.download_item span {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 200%;
+}
+.archs {
+	width: 30ex;
+	margin: auto;
+}
+
+.hide {
+	display: none;
+}
+
 .downloads {
 	float: left;
 	margin-right: 1em;
@@ -72,12 +188,13 @@ img.os {
 }
 .download_item {
 	text-align: center;
-	border-top: 1px dotted #000080;
+	border: 1px dotted #000080;
 }
-.downloads .archs {
+/*.downloads .archs {
 	border-collapse: collapse;
 	width: calc(29ex - 5em);
-}
+	border-style: 1px solid red;
+}*/
 /*
 .downloads .archs th, .downloads .archs tr:last-child {
     border-bottom: 1px dotted #000080;
@@ -180,28 +297,55 @@ Features:
 <div style="clear: both"></div>
 </div>
 
-<div id="download">
+<span class="anchor" id="download"></span>
+<div>
+	<h2 style="margin-bottom: 0;">
+		Latest version: 0.21.0.knots20210130
+	</h2>
+	<h3>
+		<a href="https://github.com/bitcoinknots/bitcoin/blob/v0.21.0.knots20210130/doc/release-notes.md">release notes</a>
+	</h3>
 
-<div class="downloads">
-	<div class="download_p">
-		<div class="download_ver">
-			<span class="ver_class">Latest version</span>
-			<span class="ver_id">0.21.0.knots20210130</span>
-		</div>
-		<div class="relnotes">
-			<a href="https://github.com/bitcoinknots/bitcoin/blob/v0.21.0.knots20210130/doc/release-notes.md">release notes</a>
-		</div>
-		<div class="sigs">
-			<a href="files/0.21.x/0.21.0.knots20210130/SHA256SUMS.asc">digital signatures</a>
-		</div>
+<div class="mainbutton hide" id="download_win32">
+	<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win32-setup-unsigned.exe">
+		<img src="images/but_windows.svg" alt="" /><span>Download Bitcoin Knots for Windows</span>
+	</a>
+</div>
+<div class="mainbutton" id="download_win64">
+	<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win64-setup-unsigned.exe">
+		<img src="images/but_windows.svg" alt="" /><span>Download Bitcoin Knots for Windows</span>
+	</a>
+</div>
+<div class="mainbutton" id="download_macos">
+	<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-osx-unsigned.dmg">
+		<img src="images/but_mac.svg" alt="" /><span>Download Bitcoin Knots for macOS</span>
+	</a>
+</div>
+<div class="mainbutton hide" id="download_ubuntu">
+	<a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoinknots">
+		<img src="images/but_ubuntu.svg" alt="" /><span>Install Bitcoin Knots for Ubuntu</span>
+	</a>
+</div>
+
+<div class="mainbutton signaturebutton" id="download_signature">
+	<a>
+		<img src="images/but_signature.svg" alt="" /><span>Download digital signature</span>
+	</a>
+</div>
+
+<div class="mainbutton advancedbutton hide" id="download_other">
+	<a>
+		<span>Show other downloads (advanced)</span>
+	</a>
+</div>
+
+<h2 style="margin-bottom: 0;">Other downloads (advanced)</h2>
+<div id="other_downloads">
 		<div class="download_item">
 			<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-x86_64-linux-gnu.tar.gz">
-			<img class="os" src="/.icons/os/med_linux.png" alt="">
+				<img class="os" src="/.icons/os/med_linux.png" alt=""><span>Linux</span>
 			</a>
 			<table class="archs">
-				<tr><th colspan="2">
-					<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-x86_64-linux-gnu.tar.gz">Linux</a>
-				</th></tr>
 				<tr><td>
 					<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-x86_64-linux-gnu.tar.gz">x86_64</a>
 				</td><td>
@@ -219,24 +363,16 @@ Features:
 				</td></tr>
 				<tr><td>
 					<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-riscv64-linux-gnu.tar.gz">riscv64</a>
+				</td><td>
+					<a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoinknots">Ubuntu PPA</a>
 				</td></tr>
 			</table>
 		</div>
 		<div class="download_item">
-			<a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoinknots">
-			<img class="os" src="/.icons/os/med_ubuntu.png" alt="">
-			Ubuntu<br />
-			PPA
-			</a>
-		</div>
-		<div class="download_item">
 			<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-osx-unsigned.dmg">
-			<img class="os" src="/.icons/os/med_osx.png" alt="">
+				<img class="os" src="/.icons/os/med_osx.png" alt=""><span>macOS</span>
 			</a>
 			<table class="archs">
-				<tr><th colspan="2">
-					<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-osx-unsigned.dmg">macOS</a>
-				</th></tr>
 				<tr><td>
 					<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-osx-unsigned.dmg">dmg</a>
 				</td><td>
@@ -246,11 +382,11 @@ Features:
 		</div>
 		<div class="download_item">
 			<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win64-setup-unsigned.exe">
-			<img class="os" src="/.icons/os/med_win.png" alt="">
+				<img class="os" src="/.icons/os/med_win.png" alt=""><span>Windows</span>
 			</a>
 			<table class="archs">
 				<tr><th colspan="2">
-					<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win64-setup-unsigned.exe">Windows</a>
+					<a style="text-decoration: none" href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win64.zip">Install EXE</a>
 				</th></tr>
 				<tr><td>
 					<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win64-setup-unsigned.exe">x86_64</a>
@@ -258,7 +394,7 @@ Features:
 					<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win32-setup-unsigned.exe">x86_32</a>
 				</td></tr>
 				<tr><th colspan="2">
-					<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win64.zip">Windows (zip)</a>
+					<a style="text-decoration: none" href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win64.zip">Portable ZIP</a>
 				</th></tr>
 				<tr><td>
 					<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win64.zip">x86_64</a>
@@ -269,12 +405,9 @@ Features:
 		</div>
 		<div class="download_item">
 			<a href="https://github.com/bitcoinknots/bitcoin/tree/v0.21.0.knots20210130">
-			<img class="os" src="/.icons/os/med_opensource.svg" alt="">
+			<img class="os" src="/.icons/os/med_opensource.svg" alt=""><span>Source code</span>
 			</a>
 			<table class="archs">
-				<tr><th colspan="2">
-					<a href="https://github.com/bitcoinknots/bitcoin/tree/v0.21.0.knots20210130">Source code</a>
-				</th></tr>
 				<tr><td>
 					<a href="https://github.com/bitcoinknots/bitcoin/tree/v0.21.0.knots20210130">GitHub</a>
 				</td><td>
@@ -287,10 +420,9 @@ Features:
 				</td></tr>
 			</table>
 		</div>
-	</div>
 </div>
 
-<h1>Download Bitcoin Knots</h1>
+<div style="width: 80%; margin: auto;">
 <h2>Security notice</h2>
 <p>
 <strong>Please note:</strong>
@@ -303,9 +435,9 @@ Luke's PGP key is <a href="https://bitcoin.org/luke-jr.asc">also available from 
 </p>
 
 <p>
-SHA256 hashes of all downloads, signed by Luke Dashjr's PGP key, are available under the "digital signatures" link in the download box.
-If this link is missing, broken, or fails to verify, do not trust the downloaded files, and <a href="mailto:luke_bcknots_securitybreach@dashjr.org">contact him</a> immediately.
+If the digital signature is missing, broken, or fails to verify, do not trust the downloaded files, and <a href="mailto:luke_bcknots_securitybreach@dashjr.org">contact Luke Dashjr</a> immediately.
 </p>
+</div>
 
 <h2>Announcements e-mail list</h2>
 <p>
