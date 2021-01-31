@@ -102,7 +102,10 @@ body {
         display: inline-block;
         vertical-align: middle;
 }
-.signaturebutton a {
+.signaturebutton a,
+.signaturebutton a:link,
+.signaturebutton a:visited,
+.signaturebutton a:active {
 	padding: 7px 10px;
 	background-color:#6fad2c;
 	border:1px solid #598f20;
@@ -116,7 +119,10 @@ body {
 	height:32px;
 	width:32px;
 }
-.advancedbutton a {
+.advancedbutton a,
+.advancedbutton a:link,
+.advancedbutton a:visited,
+.advancedbutton a:active {
 	padding: 7px 10px;
 	background-color:#ad6f2c;
 	border:1px solid #8f5920;
@@ -306,11 +312,6 @@ Features:
 		<a href="https://github.com/bitcoinknots/bitcoin/blob/v0.21.0.knots20210130/doc/release-notes.md">release notes</a>
 	</h3>
 
-<div class="mainbutton hide" id="download_win32">
-	<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win32-setup-unsigned.exe">
-		<img src="images/but_windows.svg" alt="" /><span>Download Bitcoin Knots for Windows</span>
-	</a>
-</div>
 <div class="mainbutton" id="download_win64">
 	<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-win64-setup-unsigned.exe">
 		<img src="images/but_windows.svg" alt="" /><span>Download Bitcoin Knots for Windows</span>
@@ -328,19 +329,19 @@ Features:
 </div>
 
 <div class="mainbutton signaturebutton" id="download_signature">
-	<a>
+	<a href="files/0.21.x/0.21.0.knots20210130/SHA256SUMS.asc">
 		<img src="images/but_signature.svg" alt="" /><span>Download digital signature</span>
 	</a>
 </div>
 
 <div class="mainbutton advancedbutton hide" id="download_other">
-	<a>
+	<a href="javascript:document.getElementById('other_downloads').classList.remove('hide'); document.getElementById('download_other').classList.add('hide');">
 		<span>Show other downloads (advanced)</span>
 	</a>
 </div>
 
-<h2 style="margin-bottom: 0;">Other downloads (advanced)</h2>
 <div id="other_downloads">
+	<h2 style="margin-bottom: 0;">Other downloads (advanced)</h2>
 		<div class="download_item">
 			<a href="files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130-x86_64-linux-gnu.tar.gz">
 				<img class="os" src="/.icons/os/med_linux.png" alt=""><span>Linux</span>
@@ -421,6 +422,28 @@ Features:
 			</table>
 		</div>
 </div>
+
+<script>
+var os = 'windows64';
+if (navigator.userAgent.indexOf('Mac') != -1) var os = 'mac'
+else if (navigator.userAgent.indexOf('Linux') != -1) var os = 'linux64'
+else if (navigator.userAgent.indexOf('WOW64') != -1 || navigator.userAgent.indexOf('Win64') != -1) var os='windows64';
+document.getElementById('other_downloads').classList.add('hide');
+document.getElementById('download_other').classList.remove('hide');
+switch (os) {
+case 'windows64':
+	document.getElementById('download_macos').classList.add('hide');
+break;
+case 'linux64':
+	document.getElementById('download_win64').classList.add('hide');
+	document.getElementById('download_macos').classList.add('hide');
+	document.getElementById('download_ubuntu').classList.remove('hide');
+break;
+case 'mac':
+	document.getElementById('download_win64').classList.add('hide');
+break;
+}
+</script>
 
 <div style="width: 80%; margin: auto;">
 <h2>Security notice</h2>
