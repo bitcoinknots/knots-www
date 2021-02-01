@@ -432,11 +432,15 @@ Features:
 <script>
 var os = 'windows64';
 if (navigator.userAgent.indexOf('Mac') != -1) var os = 'mac'
+else if (navigator.userAgent.indexOf('Android') != -1) os = 'android'
 else if (navigator.userAgent.indexOf('Linux') != -1) var os = 'linux64'
 else if (navigator.userAgent.indexOf('WOW64') != -1 || navigator.userAgent.indexOf('Win64') != -1) var os='windows64';
 document.getElementById('other_downloads').classList.add('hide');
 document.getElementById('download_other').classList.remove('hide');
 switch (os) {
+case 'android':
+	// Show default Windows + macOS
+break;
 case 'windows64':
 	document.getElementById('download_macos').classList.add('hide');
 break;
