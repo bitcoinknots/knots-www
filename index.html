@@ -147,7 +147,19 @@ h3 {
 	margin: auto;
 	border-radius: 1ex;
 	padding: 2ex;
+	width: 86ex;
+}
+#other_downloads_latest,#other_downloads_stable {
 	width: 40ex;
+	margin: auto;
+	vertical-align: top;
+}
+#other_downloads_stable {
+	padding-right: 1ex;
+}
+#other_downloads h3 {
+	margin-top: 1ex;
+	margin-bottom: 1ex;
 }
 .download_item {
 	text-align: center;
@@ -258,12 +270,19 @@ Features:
 
 <div class="mainbutton advancedbutton hide" id="download_other">
 	<a href="javascript:document.getElementById('other_downloads').classList.remove('hide'); document.getElementById('download_other').classList.add('hide');">
-		<span>Show other downloads (advanced)</span>
+		<span>Show other downloads &amp; LTS version (advanced)</span>
 	</a>
 </div>
 
 <div id="other_downloads">
 	<h2 style="margin-bottom: 0;">Other downloads (advanced)</h2>
+	
+	<table>
+	<tr><td id="other_downloads_stable">
+		<h3>LTS version: 21.2.0.knots20210629</h3>
+		<p style="text-align: center; font-weight: bold; font-size: 200%; font-style: italic;">Coming soon</p>
+	</td><td id="other_downloads_latest">
+		<h3>Latest version: 22.0.knots20211108</h3>
 		<div class="download_item">
 			<a href="files/22.x/22.0.knots20211108/guix/bitcoin-22.0.knots20211108-x86_64-linux-gnu.tar.gz">
 				<img class="os" src="/.icons/os/med_linux.png" alt="" /><span>Linux</span>
@@ -339,6 +358,8 @@ Features:
 				</td></tr>
 			</table>
 		</div>
+	</td></tr>
+	</table>
 </div>
 
 <script>
