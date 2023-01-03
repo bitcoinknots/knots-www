@@ -488,14 +488,29 @@ break;
 <strong>Please note:</strong>
 When installing this or any other app, you should verify your download is the authentic program, and not intercepted by a virus.
 Always verify the correct digital signature on any downloads to avoid malware.
-Bitcoin Knots is signed by <a href="luke-jr.asc">Luke Dashjr's OpenPGP key</a>.
+Bitcoin Knots is signed by Luke Dashjr's OpenPGP key.
 You should ideally download the key from at least two independent sources and ensure they match.
-Luke's key is <a href="https://bitcoin.org/luke-jr.asc">also available from bitcoin.org</a>.
+<p/>
+
+<p>
+<strong style="color: #d00000">
+This server <em>and</em> Luke Dashjr's OpenPGP key are likely both compromised at present.
+If you have downloaded Bitcoin Knots after 2022 December 1st, it is recommended you remove internet access from any machine it has been installed on until further verification.
+</strong>
 </p>
 
 <p>
-If the digital signature is missing, broken, or fails to verify, do not trust the downloaded files, and <a href="mailto:luke_bcknots_securitybreach@dashjr.org">contact Luke Dashjr</a> immediately.
+If you are using an older version of Bitcoin Knots that has since expired, you may restore functionality by editing (or creating) the <code>bitcoin.conf</code> file, and adding a single line <code style="border: 1px solid black">softwareexpiry=0</code>
+Please keep in mind obsolete versions of Bitcoin Knots are not maintained (aside from LTS releases), and may have other risks.
+<strong>Do NOT try upgrading Bitcoin Knots until this website has been re-secured and you have verified new signatures as well as the legitimacy of the new key(s) signing.</strong>
 </p>
+
+<p>For advanced users: Bitcoin Knots v0.23 was also signed by at least one other developer.
+At your own risk, you can get the <a href="http://bitcoinknots.org/~luke-jr/.RISKY/programs/bitcoin/files/bitcoin-knots/23.x/23.0.knots20220529/">downloads here</a> and verify them with 
+<a href="https://github.com/bitcoinknots/guix.sigs/tree/knots/23.0.knots20220529/">
+other developer(s) keys</a>.
+</p>
+
 </div>
 
 <span class="anchor" id="announcelist"></span>
