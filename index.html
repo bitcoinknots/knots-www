@@ -257,13 +257,11 @@ Features:
 		<img src="images/but_mac.svg" alt="" /><span>Download Bitcoin Knots for macOS</span>
 	</a>
 </div>
-<!--
 <div class="mainbutton hide" id="download_ubuntu">
 	<a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoinknots">
 		<img src="images/but_ubuntu.svg" alt="" /><span>Install Bitcoin Knots for Ubuntu</span>
 	</a>
 </div>
--->
 
 <div class="mainbutton signaturebutton" id="download_signature">
 	<a href="files/26.x/26.1.knots20240325/SHA256SUMS">
@@ -278,7 +276,6 @@ Features:
 	<a href="javascript:document.getElementById('other_downloads').classList.remove('hide'); document.getElementById('download_other').classList.add('hide');">
 		<span>Show other downloads &amp; LTS version (advanced)</span>
 	</a>
-</div>
 </div>
 
 <div id="other_downloads">
@@ -396,7 +393,6 @@ Features:
 <!--
 					<a href="files/26.x/26.1.knots20240325/bitcoin-26.1.knots20240325-i686-linux-gnu.tar.gz">x86_32</a>
 -->
-					<a href="files/26.x/26.1.knots20240325/bitcoin-26.1.knots20240325-riscv64-linux-gnu.tar.gz">riscv64</a>
 				</td></tr>
 				<tr><td>
 					<a href="files/26.x/26.1.knots20240325/bitcoin-26.1.knots20240325-aarch64-linux-gnu.tar.gz">aarch64</a>
@@ -408,13 +404,11 @@ Features:
 				</td><td>
 					<a href="files/26.x/26.1.knots20240325/bitcoin-26.1.knots20240325-powerpc64le-linux-gnu.tar.gz">ppc64 LE</a>
 				</td></tr>
-<!--
 				<tr><td>
 					<a href="files/26.x/26.1.knots20240325/bitcoin-26.1.knots20240325-riscv64-linux-gnu.tar.gz">riscv64</a>
 				</td><td>
 					<a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoinknots">Ubuntu PPA</a>
 				</td></tr>
--->
 			</table>
 		</div>
 		<div class="download_item">
@@ -500,10 +494,7 @@ case 'linux64':
 	document.getElementById('download_win64').classList.add('hide');
 	document.getElementById('download_macos').classList.add('hide');
 	document.getElementById('download_signature').classList.add('hide');  // n/a to PPA
-	//document.getElementById('download_ubuntu').classList.remove('hide');
-	document.getElementById('other_downloads').classList.remove('hide');
-	document.getElementById('other_downloads_h2').classList.add('hide');
-	document.getElementById('main_downloads').classList.add('hide');
+	document.getElementById('download_ubuntu').classList.remove('hide');
 break;
 case 'mac':
 	document.getElementById('download_win64').classList.add('hide');
@@ -540,6 +531,8 @@ When a new version of Bitcoin Knots is released, you can get an e-mail letting y
 Just join the <a href="list/announcements/join">Bitcoin Knots announcements e-mail list</a>.
 Note that this email list may also be (rarely) used for other time-sensitive announcements, such as security alerts.
 </p>
+</div>
+
 </div>
 
 </body>
