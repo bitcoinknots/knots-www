@@ -148,7 +148,7 @@ h3 {
 	margin: auto;
 	border-radius: 1ex;
 	padding: 2ex;
-	width: 86ex;
+	width: 40ex;
 }
 #other_downloads_latest,#other_downloads_stable {
 	width: 40ex;
@@ -283,7 +283,7 @@ Features:
 
 <div class="mainbutton advancedbutton hide" id="download_other">
 	<a href="javascript:document.getElementById('other_downloads').classList.remove('hide'); document.getElementById('download_other').classList.add('hide');">
-		<span>Show other downloads &amp; LTS version (advanced)</span>
+		<span>Show other downloads (advanced)</span>
 	</a>
 </div>
 
@@ -291,97 +291,7 @@ Features:
 	<h2 id="other_downloads_h2" style="margin-bottom: 0;">Other downloads (advanced)</h2>
 	
 	<table>
-	<tr><td id="other_downloads_stable">
-		<h2 style="margin-bottom: 0">LTS version: 21.2.knots20210629</h2>
-		<h3 style="margin: 0">
-			<a href="https://github.com/bitcoinknots/bitcoin/blob/v21.2.knots20210629/doc/release-notes.md">release notes</a>
-		</h3>
-		<h3>Temporarily unavailable</h3>
-<!--
-		<h3 style="margin-top: 0">
-			<a href="files/21.x/21.2.knots20210629/SHA256SUMS.asc">digital signatures</a>
-		</h3>
-		<div class="download_item">
-			<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-x86_64-linux-gnu.tar.gz">
-				<img class="os" src="/.icons/os/med_linux.png" alt="" /><span>Linux</span>
-			</a>
-			<table class="archs">
-				<tr><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-x86_64-linux-gnu.tar.gz">x86_64</a>
-				</td><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-i686-pc-linux-gnu.tar.gz">x86_32</a>
-				</td></tr>
-				<tr><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-aarch64-linux-gnu.tar.gz">aarch64</a>
-				</td><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-arm-linux-gnueabihf.tar.gz">arm</a>
-				</td></tr>
-				<tr><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-powerpc64-linux-gnu.tar.gz">ppc64 BE</a>
-				</td><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-powerpc64le-linux-gnu.tar.gz">ppc64 LE</a>
-				</td></tr>
-				<tr><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-riscv64-linux-gnu.tar.gz">riscv64</a>
-				</td><td>
-					<a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoinknots-21">Ubuntu PPA</a>
-				</td></tr>
-			</table>
-		</div>
-		<div class="download_item">
-			<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-osx-unsigned.dmg">
-				<img class="os" src="/.icons/os/med_osx.png" alt="" /><span>macOS</span>
-			</a>
-			<table class="archs">
-				<tr><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-osx-unsigned.dmg">App (dmg)</a>
-				</td><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-osx64.tar.gz">tar.gz</a>
-				</td></tr>
-				<tr><td>&nbsp;</td></tr>
-			</table>
-		</div>
-		<div class="download_item">
-			<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-win64-setup-unsigned.exe">
-				<img class="os" src="/.icons/os/med_win.png" alt="" /><span>Windows</span>
-			</a>
-
-			<table class="archs">
-				<tr><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-win64-setup-unsigned.exe">Install EXE</a>
-				</td><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629-win64.zip">Portable ZIP</a>
-				</td></tr>
-			</table>
-		</div>
-		<div class="download_item">
-			<a href="https://github.com/bitcoinknots/bitcoin/tree/v21.2.knots20210629">
-			<img class="os" src="/.icons/os/med_opensource.svg" alt="" /><span>Source code</span>
-			</a>
-			<table class="archs">
-				<tr><td>
-					<a href="https://github.com/bitcoinknots/bitcoin/tree/v21.2.knots20210629">GitHub</a>
-				</td><td>
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629.tar.gz">tar.gz</a>
-				</td></tr>
-< !--
-				<tr><td colspan="2" style="font-size: 80%">
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629.desc.html">
-						detailed contrast
-						with Bitcoin Core
-					</a>
-				</td></tr>
-				<tr><td colspan="2">
-					<a href="files/21.x/21.2.knots20210629/bitcoin-21.2.knots20210629.patches.txz" style="text-align: center">
-						code patches to turn<br/>
-						Bitcoin Core into Knots
-					</a>
-				</td></tr>
--- >
-			</table>
-		</div>
--->
-	</td><td id="other_downloads_latest">
+	<tr><td id="other_downloads_latest">
 		<h2 style="margin-bottom: 0">Latest version: 26.1.knots20240513</h2>
 		<h3 style="margin: 0">
 			<a href="https://github.com/bitcoinknots/bitcoin/blob/v26.1.knots20240513/doc/release-notes.md">release notes</a>
