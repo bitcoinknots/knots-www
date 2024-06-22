@@ -1,1 +1,0 @@
-RewriteRule .* https://lists.linuxfoundation.org/mailman/listinfo/bitcoin-knots-announce [R=302,L]
