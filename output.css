@@ -584,6 +584,11 @@ video {
   margin-right: auto;
 }
 
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
 .-ml-10 {
   margin-left: -2.5rem;
 }
@@ -1083,6 +1088,11 @@ video {
   padding-bottom: 6rem;
 }
 
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
 .pb-11 {
   padding-bottom: 2.75rem;
 }
@@ -1442,6 +1452,11 @@ video {
     margin-bottom: 8px;
   }
 
+  .md\:my-28 {
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+  }
+
   .md\:-mt-2 {
     margin-top: -0.5rem;
   }
@@ -1539,6 +1554,11 @@ video {
   .md\:py-52 {
     padding-top: 13rem;
     padding-bottom: 13rem;
+  }
+
+  .md\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 
   .md\:pl-16 {
