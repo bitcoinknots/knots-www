@@ -589,6 +589,11 @@ video {
   margin-bottom: 3rem;
 }
 
+.my-80 {
+  margin-top: 20rem;
+  margin-bottom: 20rem;
+}
+
 .-ml-10 {
   margin-left: -2.5rem;
 }
@@ -1559,6 +1564,11 @@ video {
   .md\:py-24 {
     padding-top: 6rem;
     padding-bottom: 6rem;
+  }
+
+  .md\:py-28 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 
   .md\:pl-16 {
