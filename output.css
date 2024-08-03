@@ -1190,6 +1190,10 @@ video {
   padding-bottom: 10rem;
 }
 
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1478,6 +1482,10 @@ video {
     margin-top: 2rem;
   }
 
+  .md\:mt-14 {
+    margin-top: 3.5rem;
+  }
+
   .md\:inline-block {
     display: inline-block;
   }
@@ -1605,6 +1613,10 @@ video {
 
   .md\:pt-52 {
     padding-top: 13rem;
+  }
+
+  .md\:pb-14 {
+    padding-bottom: 3.5rem;
   }
 
   .md\:text-left {
