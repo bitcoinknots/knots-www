@@ -7,8 +7,9 @@ module.exports = {
         sm: "478px",
         md: "850px",
         lg: "1020px",
-        xl: "1440px",
-        "2xl": "2560px",
+        xl: "1140px",
+        "2xl": "1440px",
+        "3xl": "2560px",
       },
       fontFamily: {
         martelSansBold: ["MartelSansBold"],
