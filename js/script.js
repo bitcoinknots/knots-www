@@ -30,7 +30,7 @@ else if (
 )
   os = "windows64";
 // document.getElementById("other_downloads").classList.add("hidden");
-// document.getElementById("download_other").classList.remove("hidden");
+document.getElementById("download_other").classList.remove("hidden");
 console.log(os);
 switch (os) {
   case "android":
@@ -42,7 +42,7 @@ switch (os) {
   case "linux64":
     document.getElementById("download_win64").classList.add("hidden");
     document.getElementById("download_macos").classList.add("hidden");
-    // document.getElementById("download_signature").classList.add("hidden"); // n/a to PPA
+    document.getElementById("download_signature").classList.add("hidden"); // n/a to PPA
     document.getElementById("download_ubuntu").classList.remove("hidden");
     document.getElementById("download_ubuntu").classList.add("flex");
     break;
