@@ -23,6 +23,16 @@
           <span class="hamburger-middle"></span>
           <span class="hamburger-bottom"></span>
         </button>
+        <div id="menu"
+          class="absolute left-6 right-6 mt-10 hidden flex-col items-center gap-12 self-end rounded-sm bg-white py-16 font-bold drop-shadow-md sm:w-auto sm:self-center">
+          <a href="#download"
+            class="nav-link font-manjariRegular text-sm text-sharpBlack hover:text-electricBlue">Download</a>
+          <a href="#about"
+            class="nav-link font-manjariRegular text-sm text-sharpBlack hover:text-electricBlue">About</a>
+          <a href="#security"
+            class="nav-link font-manjariRegular text-sm text-sharpBlack hover:text-electricBlue">Security</a>
+          <a href="#news" class="nav-link font-manjariRegular text-sm text-sharpBlack hover:text-electricBlue">News</a>
+        </div>
       </div>
       <!-- </nav> -->
 
@@ -40,15 +50,6 @@
           <img class="h-12 w-12" src="./images/telegram.svg" alt="telegram" />
         </a>
       </div>
-    </div>
-    <div id="menu"
-      class="z-20 mt-10 hidden flex-col items-center space-y-6 self-end rounded-sm bg-white py-8 drop-shadow-md sm:self-center md:hidden">
-      <a href="#download"
-        class="nav-link font-manjariRegular text-sm text-sharpBlack hover:text-electricBlue">Download</a>
-      <a href="#about" class="nav-link font-manjariRegular text-sm text-sharpBlack hover:text-electricBlue">About</a>
-      <a href="#security"
-        class="nav-link font-manjariRegular text-sm text-sharpBlack hover:text-electricBlue">Security</a>
-      <a href="#news" class="nav-link font-manjariRegular text-sm text-sharpBlack hover:text-electricBlue">News</a>
     </div>
   </header>
 
@@ -192,10 +193,12 @@
             Show other download formats + LTS version
           </summary>
           <div class="mt-8 flex w-full flex-col gap-y-5">
-            <div class="text-sm flex justify-end gap-x-1">
-              <a class="text-electricBlue underline" href="files/27.x/27.1.knots20240621/SHA256SUMS">digital fingerprints</a>
+            <div class="flex justify-end gap-x-1 text-sm">
+              <a class="text-electricBlue underline" href="files/27.x/27.1.knots20240621/SHA256SUMS">digital
+                fingerprints</a>
               &amp;
-              <a class="text-electricBlue underline" href="files/27.x/27.1.knots20240621/SHA256SUMS.asc">digital signatures</a>
+              <a class="text-electricBlue underline" href="files/27.x/27.1.knots20240621/SHA256SUMS.asc">digital
+                signatures</a>
             </div>
 
             <div class="flex items-start gap-6 rounded-sm bg-white p-8 shadow-md">
@@ -295,7 +298,7 @@
           alt="blue circle" />
         <!-- <img class="mt-[300px] h-[600px] w-[600px] object-none object-left lg:mt-32" src="./images/blue-circle.svg" -->
         <!--   alt="blue circle" /> -->
-        <img class="-mt-[700px] h-[513px] object-none object-left lg:-mt-[800px] w-full mb-[170px] pl-20 md:pl-36"
+        <img class="-mt-[700px] mb-[170px] h-[513px] w-full object-none object-left pl-20 md:pl-36 lg:-mt-[800px]"
           src="./images/app-preview-27.1.svg" alt="app preview" />
         <!-- <img class="-mt-[850px] h-[697px] w-[1075px] object-none object-left pl-20 md:pl-16 lg:-mt-[900px]" -->
         <!--   src="./images/app-preview.svg" alt="app preview" /> -->

@@ -8,7 +8,6 @@ btn.addEventListener("click", () => {
   btn.classList.toggle("open");
   nav.classList.toggle("flex");
   nav.classList.toggle("hidden");
-  knots_line.classList.toggle("pt-16");
 });
 
 navLinks.forEach((link) => {
@@ -16,7 +15,6 @@ navLinks.forEach((link) => {
     btn.classList.toggle("open");
     nav.classList.toggle("flex");
     nav.classList.toggle("hidden");
-    knots_line.classList.toggle("pt-16");
   });
 });
 

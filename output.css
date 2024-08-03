@@ -554,8 +554,20 @@ video {
   --tw-contain-style:  ;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .relative {
   position: relative;
+}
+
+.left-6 {
+  left: 1.5rem;
+}
+
+.right-6 {
+  right: 1.5rem;
 }
 
 .z-20 {
@@ -850,6 +862,10 @@ video {
   gap: 2.25rem;
 }
 
+.gap-12 {
+  gap: 3rem;
+}
+
 .gap-x-8 {
   -moz-column-gap: 2rem;
        column-gap: 2rem;
@@ -1009,6 +1025,11 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .pb-11 {
@@ -1317,6 +1338,10 @@ video {
 }
 
 @media (min-width: 478px) {
+  .sm\:w-auto {
+    width: auto;
+  }
+
   .sm\:self-center {
     align-self: center;
   }
