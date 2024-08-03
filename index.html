@@ -64,38 +64,104 @@
     </h1>
   </div>
 
-  <!-- knots macos download -->
+  <!-- knots download -->
   <section id="download" class="mx-5 flex flex-col pt-16 md:mx-[85px] 2xl:items-center">
-    <div
-      class="flex w-full max-w-[954px] flex-col items-center justify-start gap-9 rounded-sm bg-white p-10 text-center shadow-shadowCustom md:flex-row md:items-start">
-      <img class="h-12 w-12" src="./images/apple-logo.svg" alt="apple logo" />
-      <div class="flex w-full flex-col items-center gap-8 md:items-start md:gap-2 md:pt-[7.65px]">
-        <h3 class="w-[358px] font-manjariBold text-lg font-medium text-sharpBlack md:text-left lg:w-full">
-          Download <span class="hidden md:inline-block">Bitcoin</span>Knots
-          for macOS
-        </h3>
-        <button
-          class="flex items-center justify-center rounded-lg bg-sunglow px-8 pb-[3px] pt-[11px] font-manjariBold text-sm text-sharpBlack md:my-[8px] lg:hidden"
+    <div class="flex w-full max-w-[954px] flex-col gap-9 rounded-sm bg-white p-10 shadow-shadowCustom md:items-start">
+      <div id="download_macos"
+        class="flex w-full flex-col items-center justify-start gap-9 rounded-sm text-start md:flex-row md:items-start">
+        <img class="h-12 w-12" src="./images/apple-logo.svg" alt="apple logo" />
+        <div class="flex flex-col items-start gap-8">
+          <div
+            class="flex w-[358px] flex-col items-center gap-8 text-center md:items-start md:gap-2 md:pt-[7.65px] md:text-start lg:w-full">
+            <h3 class="font-manjariBold text-lg font-medium text-sharpBlack md:text-left">
+              Download
+              <span class="hidden md:inline-block">Bitcoin</span>Knots for
+              MacOS
+            </h3>
+            <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-x86_64-apple-darwin.dmg"
+              class="flex items-center justify-center rounded-lg bg-sunglow px-8 pb-[3px] pt-[11px] font-manjariBold text-sm text-sharpBlack md:my-[8px] lg:hidden"
+              type="button">
+              Download
+            </a>
+            <p class="font-manjariRegular text-sm text-gray">
+              Latest version: 27.1.knots20240621
+            </p>
+          </div>
+        </div>
+
+        <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-x86_64-apple-darwin.dmg"
+          class="hidden items-center justify-center rounded-lg bg-sunglow px-8 pb-[3px] pt-[11px] font-manjariBold text-sm text-sharpBlack lg:flex"
           type="button">
           Download
-        </button>
-        <p class="font-manjariRegular text-sm text-gray">
-          Latest version: 26.1.knots20240513
-        </p>
-        <a class="font-manjariRegular text-sm text-electricBlue" href="#">
-          view release notes
         </a>
       </div>
-      <button
-        class="hidden items-center justify-center rounded-lg bg-sunglow px-8 pb-[3px] pt-[11px] font-manjariBold text-sm text-sharpBlack lg:flex"
-        type="button">
-        Download
-      </button>
+      <div id="download_win64"
+        class="flex w-full flex-col items-center justify-start gap-9 rounded-sm text-start md:flex-row md:items-start">
+        <img class="h-12 w-12" src="./images/windows-logo.svg" alt="apple logo" />
+        <div class="flex flex-col items-start gap-8">
+          <div
+            class="flex w-[358px] flex-col items-center gap-8 text-center md:items-start md:gap-2 md:pt-[7.65px] md:text-start lg:w-full">
+            <h3 class="font-manjariBold text-lg font-medium text-sharpBlack md:text-left">
+              Download
+              <span class="hidden md:inline-block">Bitcoin</span>Knots for
+              Windows
+            </h3>
+            <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-win64-setup-unsigned.exe"
+              class="flex items-center justify-center rounded-lg bg-sunglow px-8 pb-[3px] pt-[11px] font-manjariBold text-sm text-sharpBlack md:my-[8px] lg:hidden"
+              type="button">
+              Download
+            </a>
+            <p class="font-manjariRegular text-sm text-gray">
+              Latest version: 27.1.knots20240621
+            </p>
+          </div>
+        </div>
+
+        <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-win64-setup-unsigned.exe"
+          class="hidden items-center justify-center rounded-lg bg-sunglow px-8 pb-[3px] pt-[11px] font-manjariBold text-sm text-sharpBlack lg:flex"
+          type="button">
+          Download
+        </a>
+      </div>
+
+      <div id="download_ubuntu"
+        class="hidden w-full flex-col items-center justify-start gap-9 rounded-sm text-start md:flex-row md:items-start">
+        <img class="h-12 w-12" src="./images/windows-logo.svg" alt="apple logo" />
+        <div class="flex flex-col items-start gap-8">
+          <div
+            class="flex w-[358px] flex-col items-center gap-8 text-center md:items-start md:gap-2 md:pt-[7.65px] md:text-start lg:w-full">
+            <h3 class="font-manjariBold text-lg font-medium text-sharpBlack md:text-left">
+              Download
+              <span class="hidden md:inline-block">Bitcoin</span>Knots for
+              Ubuntu
+            </h3>
+            <a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoinknots"
+              class="flex items-center justify-center rounded-lg bg-sunglow px-8 pb-[3px] pt-[11px] font-manjariBold text-sm text-sharpBlack md:my-[8px] lg:hidden"
+              type="button">
+              Download
+            </a>
+            <p class="font-manjariRegular text-sm text-gray">
+              Latest version: 27.1.knots20240621
+            </p>
+          </div>
+        </div>
+
+        <a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoinknots"
+          class="hidden items-center justify-center rounded-lg bg-sunglow px-8 pb-[3px] pt-[11px] font-manjariBold text-sm text-sharpBlack lg:flex"
+          type="button">
+          Download
+        </a>
+      </div>
+
+      <a href="https://github.com/bitcoinknots/bitcoin/blob/v27.1.knots20240621/doc/release-notes.md"
+        class="pl-20 font-manjariRegular text-sm text-electricBlue" href="#">
+        view release notes
+      </a>
     </div>
 
     <!-- fingerprints and signatures -->
     <div class="mt-16 flex flex-col items-center gap-8 md:items-start lg:mb-20 2xl:items-center">
-      <button
+      <a href="files/27.x/27.1.knots20240621/SHA256SUMS"
         class="flex w-[331px] items-center justify-center gap-4 rounded-lg bg-electricBlue font-manjariBold text-sm text-white shadow-shadowCustom md:w-[446px]"
         type="button">
         <img class="h-12 w-12" src="./images/fingerprint-shield.svg" alt="fingerprints" />
@@ -104,9 +170,9 @@
           <span class="hidden md:inline-block">Download</span> Digital
           fingerprints
         </div>
-      </button>
+      </a>
 
-      <button
+      <a href="files/27.x/27.1.knots20240621/SHA256SUMS.asc"
         class="flex w-[331px] items-center justify-center gap-4 rounded-lg bg-electricBlue font-manjariBold text-sm text-white shadow-shadowCustom md:w-[446px]"
         type="button">
         <img class="h-12 w-12" src="./images/pen.svg" alt="signatures" />
@@ -115,7 +181,7 @@
           <span class="hidden md:inline-block">Download</span> Digital
           signatures
         </div>
-      </button>
+      </a>
 
       <div class="mb-28 flex flex-col items-center justify-center md:items-start md:justify-start">
         <details class="flex w-full max-w-[954px] flex-col items-center justify-center">
@@ -131,13 +197,17 @@
                   Linux
                 </h3>
                 <div class="mt-4 flex flex-wrap gap-6 font-manjariRegular text-sm text-electricBlue underline">
-                  <a href="#">x86</a>
-                  <a href="#">aarch64</a>
-                  <a href="#">ppc64 BE</a>
-                  <a href="#">ppc64 LE</a>
-                  <a href="#">riscv64</a>
-                  <a href="#">arm</a>
-                  <a href="#">Ubuntu PPA</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-x86_64-linux-gnu.tar.gz">x86</a>
+                  <a
+                    href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-aarch64-linux-gnu.tar.gz">aarch64</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-powerpc64-linux-gnu.tar.gz">ppc64
+                    BE</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-powerpc64le-linux-gnu.tar.gz">ppc64
+                    LE</a>
+                  <a
+                    href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-riscv64-linux-gnu.tar.gz">riscv64</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-arm-linux-gnueabihf.tar.gz">arm</a>
+                  <a href="https://launchpad.net/~luke-jr/+archive/ubuntu/bitcoinknots">Ubuntu PPA</a>
                 </div>
               </div>
             </div>
@@ -148,12 +218,18 @@
                   MacOS
                 </h3>
                 <div class="mt-4 flex flex-wrap gap-6 font-manjariRegular text-sm text-electricBlue underline">
-                  <a href="#">Intel Mac (dmg)</a>
-                  <a href="#">Intel Mac (zip)</a>
-                  <a href="#">Intel Mac (tar.gz)</a>
-                  <a href="#">Apple Silicon (dmg)</a>
-                  <a href="#">Apple Silicon (zip)</a>
-                  <a href="#">Apple Silicon (tar.gz)</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-x86_64-apple-darwin.dmg">Intel Mac
+                    (dmg)</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-x86_64-apple-darwin.zip">Intel Mac
+                    (zip)</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-x86_64-apple-darwin.tar.gz">Intel
+                    Mac (tar.gz)</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-arm64-apple-darwin.dmg">Apple
+                    Silicon (dmg)</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-arm64-apple-darwin.zip">Apple
+                    Silicon (zip)</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-arm64-apple-darwin.tar.gz">Apple
+                    Silicon (tar.gz)</a>
                 </div>
               </div>
             </div>
@@ -164,8 +240,9 @@
                   Windows
                 </h3>
                 <div class="mt-4 flex flex-wrap gap-6 font-manjariRegular text-sm text-electricBlue underline">
-                  <a href="#">Install (exe)</a>
-                  <a href="#">portable (zip)</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-win64-setup-unsigned.exe">Install
+                    (exe)</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-win64.zip">portable (zip)</a>
                 </div>
               </div>
             </div>
@@ -176,9 +253,10 @@
                   Source Code
                 </h3>
                 <div class="mt-4 flex flex-wrap gap-6 font-manjariRegular text-sm text-electricBlue underline">
-                  <a href="#">GitHub</a>
-                  <a href="#">tar.gz</a>
-                  <a href="#">detailed contract with Bitcoin Core</a>
+                  <a href="https://github.com/bitcoinknots/bitcoin/tree/v27.1.knots20240621">GitHub</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621.tar.gz">tar.gz</a>
+                  <a href="files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621.desc.html">detailed contract with
+                    Bitcoin Core</a>
                 </div>
               </div>
             </div>
