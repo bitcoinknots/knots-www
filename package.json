@@ -1,0 +1,14 @@
+{
+  "name": "knots",
+  "version": "0.0.1",
+  "description": "A site for Bitcoin Knots",
+  "scripts": {
+    "build": "tailwindcss -i ./input.css -o ./output.css",
+    "watch": "tailwindcss -i ./input.css -o ./output.css --watch"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.2",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "tailwindcss": "^3.4.4"
+  }
+}
