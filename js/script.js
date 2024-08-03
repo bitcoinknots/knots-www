@@ -31,7 +31,6 @@ else if (
   os = "windows64";
 // document.getElementById("other_downloads").classList.add("hidden");
 document.getElementById("download_other").classList.remove("hidden");
-console.log(os);
 switch (os) {
   case "android":
     // Show default Windows + macOS
