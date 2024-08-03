@@ -39,7 +39,9 @@ switch (os) {
   case "linux64":
     document.getElementById("download_win64").classList.add("hidden");
     document.getElementById("download_macos").classList.add("hidden");
-    document.getElementById("download_signature").classList.add("hidden"); // n/a to PPA
+    document.getElementById("top_download_signature").classList.add("hidden"); // n/a to PPA
+    document.getElementById("bottom_download_signature").classList.remove("hidden");
+    document.getElementById("bottom_download_signature").classList.add("flex");
     document.getElementById("download_ubuntu").classList.remove("hidden");
     document.getElementById("download_ubuntu").classList.add("flex");
     break;

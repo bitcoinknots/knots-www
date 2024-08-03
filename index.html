@@ -11,7 +11,7 @@
 
 <body class="overflow-x-hidden bg-silverSand">
   <!-- header -->
-  <header class="md:pb-13 relative mx-auto px-6 pb-11 pt-8 sm:px-8 lg:px-16 md:pt-12">
+  <header class="md:pb-13 relative mx-auto px-6 pb-11 pt-8 sm:px-8 md:pt-12 lg:px-16">
     <div class="flex w-full items-center justify-between">
       <img class="h-[30px] w-[200px] md:h-[48px] md:w-[320px]" src="./images/logo.svg" alt="Bitcoin Knots" />
 
@@ -162,7 +162,7 @@
 
     <!-- fingerprints and signatures -->
     <div class="mt-16 flex flex-col items-center gap-8 md:items-start lg:mb-20">
-      <div id="download_signature" class="flex flex-col items-center gap-8 3xl:items-center">
+      <div id="top_download_signatures" class="flex flex-col items-center gap-8 3xl:items-center">
         <a href="files/27.x/27.1.knots20240621/SHA256SUMS"
           class="flex w-[331px] items-center justify-center gap-4 rounded-lg bg-electricBlue font-manjariBold text-sm text-white shadow-shadowCustom md:w-[446px]"
           type="button">
@@ -193,7 +193,7 @@
             Show other download formats
           </summary>
           <div class="mt-8 flex w-full flex-col gap-y-5">
-            <div class="flex justify-end gap-x-1 text-sm">
+            <div id="bottom_download_signatures" class="hidden justify-end gap-x-1 text-sm">
               <a class="text-electricBlue underline" href="files/27.x/27.1.knots20240621/SHA256SUMS">digital
                 fingerprints</a>
               &amp;
@@ -408,8 +408,7 @@
             expired, you may restore functionality by editing (or creating)
             the bitcoin.conf file, and adding a single
             line softwareexpiry=0 Please keep in mind obsolete versions of
-            Bitcoin Knots are not maintained, and
-            may have other risks. 
+            Bitcoin Knots are not maintained, and may have other risks. 
           </p>
         </div>
       </div>
