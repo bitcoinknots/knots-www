@@ -636,6 +636,42 @@ video {
   margin-top: 300px;
 }
 
+.-mt-\[900px\] {
+  margin-top: -900px;
+}
+
+.-mt-\[1000px\] {
+  margin-top: -1000px;
+}
+
+.-ml-20 {
+  margin-left: -5rem;
+}
+
+.mb-\[300px\] {
+  margin-bottom: 300px;
+}
+
+.mb-\[100px\] {
+  margin-bottom: 100px;
+}
+
+.mb-\[170px\] {
+  margin-bottom: 170px;
+}
+
+.mt-\[200px\] {
+  margin-top: 200px;
+}
+
+.-mt-\[600px\] {
+  margin-top: -600px;
+}
+
+.-mt-\[700px\] {
+  margin-top: -700px;
+}
+
 .block {
   display: block;
 }
@@ -670,6 +706,10 @@ video {
 
 .h-\[697px\] {
   height: 697px;
+}
+
+.h-\[513px\] {
+  height: 513px;
 }
 
 .w-12 {
@@ -714,6 +754,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[816px\] {
+  width: 816px;
 }
 
 .max-w-\[1034px\] {
@@ -871,6 +915,20 @@ video {
   border-radius: 20px;
 }
 
+.border {
+  border-width: 1px;
+}
+
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
+.border-green-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(34 197 94 / var(--tw-border-opacity));
+}
+
 .bg-aquamarine {
   --tw-bg-opacity: 1;
   background-color: rgb(116 230 168 / var(--tw-bg-opacity));
@@ -1023,6 +1081,22 @@ video {
 
 .pl-24 {
   padding-left: 6rem;
+}
+
+.pl-40 {
+  padding-left: 10rem;
+}
+
+.pl-44 {
+  padding-left: 11rem;
+}
+
+.pl-80 {
+  padding-left: 20rem;
+}
+
+.pr-32 {
+  padding-right: 8rem;
 }
 
 .text-center {
@@ -1249,6 +1323,10 @@ video {
 }
 
 @media (min-width: 850px) {
+  .md\:m-0 {
+    margin: 0px;
+  }
+
   .md\:mx-20 {
     margin-left: 5rem;
     margin-right: 5rem;
@@ -1384,6 +1462,18 @@ video {
     padding-top: 7.65px;
   }
 
+  .md\:pl-10 {
+    padding-left: 2.5rem;
+  }
+
+  .md\:pl-32 {
+    padding-left: 8rem;
+  }
+
+  .md\:pl-36 {
+    padding-left: 9rem;
+  }
+
   .md\:text-left {
     text-align: left;
   }
@@ -1422,6 +1512,38 @@ video {
 
   .lg\:mt-\[330px\] {
     margin-top: 330px;
+  }
+
+  .lg\:-mt-\[1200px\] {
+    margin-top: -1200px;
+  }
+
+  .lg\:mt-24 {
+    margin-top: 6rem;
+  }
+
+  .lg\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .lg\:-mt-\[500px\] {
+    margin-top: -500px;
+  }
+
+  .lg\:-mt-\[700px\] {
+    margin-top: -700px;
+  }
+
+  .lg\:-mt-\[800px\] {
+    margin-top: -800px;
+  }
+
+  .lg\:mt-56 {
+    margin-top: 14rem;
+  }
+
+  .lg\:mt-4 {
+    margin-top: 1rem;
   }
 
   .lg\:block {
