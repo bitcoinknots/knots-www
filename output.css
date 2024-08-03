@@ -1377,6 +1377,11 @@ video {
   .sm\:self-center {
     align-self: center;
   }
+
+  .sm\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 @media (min-width: 850px) {
@@ -1661,6 +1666,11 @@ video {
   .lg\:px-\[122px\] {
     padding-left: 122px;
     padding-right: 122px;
+  }
+
+  .lg\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   .lg\:pr-\[122px\] {
