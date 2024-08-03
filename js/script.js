@@ -40,7 +40,9 @@ switch (os) {
     document.getElementById("download_win64").classList.add("hidden");
     document.getElementById("download_macos").classList.add("hidden");
     document.getElementById("top_download_signatures").classList.add("hidden"); // n/a to PPA
-    document.getElementById("bottom_download_signatures").classList.remove("hidden");
+    document
+      .getElementById("bottom_download_signatures")
+      .classList.remove("hidden");
     document.getElementById("bottom_download_signatures").classList.add("flex");
     document.getElementById("download_ubuntu").classList.remove("hidden");
     document.getElementById("download_ubuntu").classList.add("flex");
@@ -49,3 +51,16 @@ switch (os) {
     document.getElementById("download_win64").classList.add("hidden");
     break;
 }
+const links = document.querySelectorAll("a.warn_telegram");
+
+links.forEach((link) => {
+  link.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    const userConfirmed = confirm("WARNING: It is very easy to spoof users on Telegram! Never send someone bitcoins based on a Telegram conversation! ");
+
+    if (userConfirmed) {
+      window.location.href = this.href;
+    }
+  });
+});
