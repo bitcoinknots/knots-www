@@ -1499,6 +1499,10 @@ video {
     padding-left: 5rem;
   }
 
+  .md\:pt-20 {
+    padding-top: 5rem;
+  }
+
   .md\:text-left {
     text-align: left;
   }
