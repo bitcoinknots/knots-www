@@ -51,16 +51,16 @@ switch (os) {
     document.getElementById("download_win64").classList.add("hidden");
     break;
 }
-const links = document.querySelectorAll("a.warn_telegram");
-
-links.forEach((link) => {
-  link.addEventListener("click", function (event) {
-    event.preventDefault();
-
-    const userConfirmed = confirm("WARNING: It is very easy to spoof users on Telegram! Never send someone bitcoins based on a Telegram conversation! ");
-
-    if (userConfirmed) {
-      window.location.href = this.href;
-    }
-  });
-});
+// const links = document.querySelectorAll("a.warn_telegram");
+//
+// links.forEach((link) => {
+//   link.addEventListener("click", function (event) {
+//     event.preventDefault();
+//
+//     const userConfirmed = confirm("WARNING: It is very easy to spoof users on Telegram! Never send someone bitcoins based on a Telegram conversation! ");
+//
+//     if (userConfirmed) {
+//       window.location.href = this.href;
+//     }
+//   });
+// });
