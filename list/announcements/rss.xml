@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Bitcoin Knots</title>
+		<description></description>
+		<link>https://bitcoinknots.org</link>
+		<atom:link href="https://bitcoinknots.org/list/announcements/rss.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Bitcoin Knots 27.1.knots20240621 released</title>
+			<description>
+				&lt;p&gt;
+					Bitcoin Knots version 27.1.knots20240621 is now available for &lt;a href=&quot;https://bitcoinknots.org/#download&quot;&gt;download&lt;/a&gt;.
+				&lt;/p&gt;
+				&lt;p&gt;
+					This release includes new features, various bug fixes, and performance
+					improvements.
+				&lt;/p&gt;
+				&lt;p&gt;
+					Please report bugs using &lt;a href=&quot;https://github.com/bitcoinknots/bitcoin/issues&quot;&gt;the issue tracker at GitHub&lt;/a&gt;.
+				&lt;/p&gt;
+				&lt;p&gt;
+					See the &lt;a href=&quot;https://github.com/bitcoinknots/bitcoin/blob/v27.1.knots20240621/doc/release-notes.md&quot;&gt;release notes&lt;/a&gt; for more information about this release.
+				&lt;/p&gt;
+			</description>
+			<pubDate>Mon, 17 Jun 2024 00:00:00 -0400</pubDate>
+			<link>https://bitcoinknots.org/#download</link>
+			<guid isPermaLink="false">v27.1.knots20240621</guid>
+		</item>
+	</channel>
+</rss>
