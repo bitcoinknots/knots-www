@@ -1,0 +1,1 @@
+RewriteRule .* https://bitcoinknots.org/#news [NE,R=302,L]
