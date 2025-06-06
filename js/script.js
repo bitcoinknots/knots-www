@@ -19,12 +19,52 @@ navLinks.forEach((link) => {
 });
 
 let os = "windows64";
-if (navigator.userAgent.indexOf("Mac") != -1) os = "mac";
-else if (navigator.userAgent.indexOf("Android") != -1) os = "android";
-else if (navigator.userAgent.indexOf("Linux") != -1) os = "linux64";
+let macArch = null;
+
+async function detectMacArchitecture() {
+  if (navigator.userAgent.indexOf("Mac") !== -1) {
+    if ('userAgentData' in navigator) {
+      try {
+        const data = await navigator.userAgentData.getHighEntropyValues(['architecture']);
+        if (data.architecture === 'arm') {
+          return "arm64";
+        }
+        return "x86_64";
+      } catch (e) {
+        return "x86_64";
+      }
+    }
+    
+    // Fallback for browsers without User Agent Client Hints API
+    return "x86_64";
+  }
+  
+  return null;
+}
+
+function updateMacDownloadLinks() {
+  const macDownloadLinks = document.querySelectorAll('#download_macos a[href*="apple-darwin"]');
+  macDownloadLinks.forEach(link => {
+    const currentHref = link.getAttribute('href');
+    if (macArch === "arm64") {
+      const arm64Href = currentHref.replace('x86_64-apple-darwin', 'arm64-apple-darwin');
+      link.setAttribute('href', arm64Href);
+    }
+  });
+}
+
+if (navigator.userAgent.indexOf("Mac") !== -1) {
+  os = "mac";
+  detectMacArchitecture().then(arch => {
+    macArch = arch;
+    updateMacDownloadLinks();
+  });
+}
+else if (navigator.userAgent.indexOf("Android") !== -1) os = "android";
+else if (navigator.userAgent.indexOf("Linux") !== -1) os = "linux64";
 else if (
-  navigator.userAgent.indexOf("WOW64") != -1 ||
-  navigator.userAgent.indexOf("Win64") != -1
+  navigator.userAgent.indexOf("WOW64") !== -1 ||
+  navigator.userAgent.indexOf("Win64") !== -1
 )
   os = "windows64";
 // document.getElementById("other_downloads").classList.add("hidden");
