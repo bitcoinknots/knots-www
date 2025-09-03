@@ -7,6 +7,28 @@
 		<atom:link href="https://bitcoinknots.org/list/announcements/rss.xml" rel="self" type="application/rss+xml" />
 
 		<item>
+			<title>Bitcoin Knots 29.1.knots20250903 released</title>
+			<description>
+				&lt;p&gt;
+					Bitcoin Knots version 29.1.knots20250903 is now available for &lt;a href=&quot;https://bitcoinknots.org/#download&quot;&gt;download&lt;/a&gt;.
+				&lt;/p&gt;
+				&lt;p&gt;
+					This release includes new features, various bug fixes, and performance
+					improvements.
+				&lt;/p&gt;
+				&lt;p&gt;
+					Please report bugs using &lt;a href=&quot;https://github.com/bitcoinknots/bitcoin/issues&quot;&gt;the issue tracker at GitHub&lt;/a&gt;.
+				&lt;/p&gt;
+				&lt;p&gt;
+					See the &lt;a href=&quot;https://github.com/bitcoinknots/bitcoin/blob/v29.1.knots20250903/doc/release-notes.md&quot;&gt;release notes&lt;/a&gt; for more information about this release.
+				&lt;/p&gt;
+			</description>
+			<pubDate>Wed, 3 Sep 2025 23:16:51 -0000</pubDate>
+			<link>https://bitcoinknots.org/#download</link>
+			<guid isPermaLink="false">v29.1.knots20250903</guid>
+		</item>
+
+		<item>
 			<title>Bitcoin Knots 28.1.knots20250305 released</title>
 			<description>
 				&lt;p&gt;
