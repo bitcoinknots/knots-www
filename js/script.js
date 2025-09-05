@@ -26,17 +26,17 @@ async function detectMacArchitecture() {
     if ('userAgentData' in navigator) {
       try {
         const data = await navigator.userAgentData.getHighEntropyValues(['architecture']);
-        if (data.architecture === 'arm') {
-          return "arm64";
+        if (data.architecture === 'x86') {
+          return "x86_64";
         }
-        return "x86_64";
+        return "arm64";
       } catch (e) {
-        return "x86_64";
+        return "arm64";
       }
     }
     
     // Fallback for browsers without User Agent Client Hints API
-    return "x86_64";
+    return "arm64";
   }
   
   return null;
@@ -46,9 +46,9 @@ function updateMacDownloadLinks() {
   const macDownloadLinks = document.querySelectorAll('#download_macos a[href*="apple-darwin"]');
   macDownloadLinks.forEach(link => {
     const currentHref = link.getAttribute('href');
-    if (macArch === "arm64") {
-      const arm64Href = currentHref.replace('x86_64-apple-darwin', 'arm64-apple-darwin');
-      link.setAttribute('href', arm64Href);
+    if (macArch === "x86_64") {
+      const x8664Href = currentHref.replace('arm64-apple-darwin', 'x86_64-apple-darwin');
+      link.setAttribute('href', x8664Href);
     }
   });
 }
