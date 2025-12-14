@@ -4,10 +4,9 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   ssr: true,
   app: {
-    // baseURL: '/',
-    // baseURL: '/knots-gh/',
-    // baseURL: '/knots-web/',
-    baseURL: '/bitcoinknots.org/',
+    // Default baseURL: '/' 
+    // Comment next line if not hosted on gh-pages:
+    baseURL: '/knots-www/',
     buildAssetsDir: '/build/'
   },
   components: {
@@ -24,11 +23,6 @@ export default defineNuxtConfig({
     serveStatic: true,
     prerender: {
       crawlLinks: true,
-      // failOnError: false,
-      // routes: [
-      //   // '/sitemap.xml',
-      //   ...routes
-      // ]
     },
   },
   eslint: {
@@ -43,11 +37,6 @@ export default defineNuxtConfig({
         provider: 'local',
         src: '/fonts/InterVariable.woff2'
       },
-      // {
-      //   name: 'GoogleSansCode',
-      //   provider: 'local',
-      //   src: '/fonts/GoogleSansCode-VariableFont_wght.ttf'
-      // },
     ],
     defaults: {
       weights: [400, 700],
