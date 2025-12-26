@@ -9,7 +9,7 @@ export default {
     colors: {
       white:  '#FFFFFF', // pure-white
       black:  '#000000', // pure-black
-      brand:  '#FF5E2C', // tiger-flame (killer-orange)
+      // brand:  '#FF5E2C', // tiger-flame (killer-orange)
       vanil:  '#FFDFC4', // papaya-whip (off-white)
       onyx:   '#140F11', // onyx (off-black)
       // brand: '#FF5E2C', // tiger-flame (killer-orange)
@@ -18,7 +18,7 @@ export default {
       // brand: '#ff8335', // tiger-flame (killer-orange) // FF5E2C but compliant
       // vanil: '#FFE5C4', // papaya-whip (off-white)
       // https://coolors.co/ff5e2c-140f11-000000-ffe5c4-ffffff
-      // btc: '#F7931A', // carrot-orange
+      brand: '#F7931A', // carrot-orange
       // mstr: '#FA660F'
       // Before
       // brand: '#FF5E2C', // tiger-flame (killer-orange)
