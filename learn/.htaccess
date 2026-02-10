@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^rdts$ https://bip110.org [R=302,L]
