@@ -951,10 +951,6 @@ video {
   overflow-wrap: break-word;
 }
 
-.break-all {
-  word-break: break-all;
-}
-
 .rounded-lg {
   border-radius: 46px;
 }
