@@ -21,6 +21,9 @@
 				&lt;p&gt;
 					See the &lt;a href=&quot;https://github.com/bitcoinknots/bitcoin/blob/v29.3.knots20260508/doc/release-notes.md&quot;&gt;release notes&lt;/a&gt; for more information about this release.
 				&lt;/p&gt;
+				&lt;p&gt;
+					(If you are not ready to adopt the RDTS upgrade yet, you can alternatively &lt;a href=&quot;https://github.com/bitcoinknots/bitcoin/releases/tag/v29.3.knots20260507&quot;&gt;download this same version of Bitcoin Knots without RDTS support&lt;/a&gt;.)
+				&lt;/p&gt;
 			</description>
 			<pubDate>Sat, 9 May 2026 06:01:27 -0000</pubDate>
 			<link>https://bitcoinknots.org/#download</link>
