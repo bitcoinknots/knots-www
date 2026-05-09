@@ -1,3 +1,4 @@
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt Expat */
 const btn = document.getElementById("menu-btn");
 const nav = document.getElementById("menu");
 const knots_line = document.getElementById("knots-line");
@@ -104,3 +105,4 @@ switch (os) {
 //     }
 //   });
 // });
+/* @license-end */
