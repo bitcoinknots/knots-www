@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>BIP110 code review for humans</title>
+<style type="text/css">
+pre {
+	color:#1f1c1b;
+	background-color:#ffffff;
+	white-space: pre-wrap;
+}
+table,tr,td {
+	border-bottom: 1px dashed silver;
+	border-collapse: collapse;
+}
+td {
+	padding: 1ex;
+}
+</style>
+</head>
+<body>
+<h1>BIP110 code review for humans</h1>
+<p>
+	This document has been created in hopes of enabling non-developers to personally review Bitcoin Knots's implementation of the <a href="https://github.com/bitcoin/bips/blob/master/bip-0110.mediawiki">BIP110</a> consensus rules.
+	While reviewing consensus changes can seem like a daunting task, BIP110 provides a rare opportunity for everyone to do so because of its simplicity.
+	With only 5 modified lines of code and 72 added, across 5 source code files, we can explain it in a simple document.
+</p>
+<h2>BIP110 Rule Reference</h2>
+<ol>
+<li>New output scriptPubKeys exceeding 34 bytes are invalid, unless the first opcode is OP_RETURN, in which case up to 83 bytes are valid.
+<li>OP_PUSHDATA* payloads and script argument witness items exceeding 256 bytes are invalid, except for the redeemScript push in BIP16 scriptSigs.
+<li>Spending undefined witness (or Tapleaf) versions (ie, not Witness v0/BIP 141, Taproot/BIP 341, or P2A) is invalid. (Creating outputs with undefined witness versions is still valid.)
+<li>Witness stacks with a Taproot annex are invalid.
+<li>Taproot control blocks larger than 257 bytes (a merkle tree with 128 script leaves) are invalid.
+<li>Tapscripts including OP_SUCCESS* opcodes anywhere (even unexecuted) are invalid.
+<li>Tapscripts executing the OP_IF or OP_NOTIF instruction (regardless of result) are invalid.
+</ol>
+<h2>How to read</h2>
+<p>
+    On the left side is the actual C++ code.
+    Blue lines beginning with a "<code><span style='color:#0057ae;'>+</span></code>" (plus symbol) are added by BIP110.
+    Red lines beginning with a "<code><span style='color:#bf0303;'>-</span></code>" (minus symbol) are removed or replaced.
+    Lines without any symbol are either preexisting and retained code, or documentation comments.
+    On the right side, there is a human-readable explaination of what each of the changes do.
+</p>
+<table>
+<tr><td colspan="2"><h2>src/consensus/tx_verify.cpp</h2></td></tr>
+<tr><td>
+<pre>
+ bool Consensus::CheckOutputSizes(const CTransaction&amp; tx, TxValidationState&amp; state)
+ {
+<span style='color:#0057ae;'>+    for (const auto&amp; txout : tx.vout) {</span>
+<span style='color:#0057ae;'>+        if (txout.scriptPubKey.empty()) continue;</span>
+<span style='color:#0057ae;'>+        if (txout.scriptPubKey.size() &gt; ((txout.scriptPubKey[0] == OP_RETURN) ? MAX_OUTPUT_DATA_SIZE : MAX_OUTPUT_SCRIPT_SIZE)) {</span>
+<span style='color:#0057ae;'>+            return state.Invalid(TxValidationResult::TX_PREMATURE_SPEND, &quot;bad-txns-vout-script-toolarge&quot;);</span>
+         }
+     }
+<span style='color:#0057ae;'>+    return true;</span>
+ }
+</pre></td>
+<td>
+Checks the size of each output according to <strong>Rule 1</strong>.<br>
+<br>
+A completely empty output script (<code>scriptPubKey</code>) is ignored early (<code>continue</code>), so we don't crash checking if the first opcode is OP_RETURN.<br>
+<br>
+If the size exceeds the applicable limit, the block is declared Invalid.
+</td></tr>
+<tr><td>
+<em>Part of: bool Consensus::CheckTxInputs(const CTransaction&amp; tx, TxValidationState&amp; state,...</em>
+<pre>
+                          strprintf(&quot;%s: inputs missing/spent&quot;, __func__));
+     }
+ 
+     // NOTE: CheckTransaction is arguably the more logical place to do this, but it's context-independent, so this is probably the next best place for now
+<span style='color:#0057ae;'>+    if (rules.test(CheckTxInputsRules::OutputSizeLimit) &amp;&amp; !CheckOutputSizes(tx, state)) {</span>
+<span style='color:#0057ae;'>+        return false;</span>
+     }
+
+     CAmount nValueIn = 0;
+     for (unsigned int i = 0; i &lt; tx.vin.size(); ++i) {
+         const COutPoint &amp;prevout = tx.vin[i].prevout;
+</pre>
+</td><td>
+This simply executes the new <code>CheckOutputSizes</code> code when we're checking transaction inputs.<br>
+<br>
+The output-size rule itself is simple, but whether it should be enforced depends on the activation state of the BIP110 softfork.
+<code>CheckTransaction</code> does not know which consensus deployment rules are active, so <code>CheckTxInputs</code> is the most appropriate place to add these checks.
+</td></tr>
+<tr><td colspan="2"><h2>src/deploymentstatus.h</h2></td></tr>
+<tr><td>
+<pre>
+ inline bool DeploymentActiveAfter(const CBlockIndex* pindexPrev, const Consensus::Params&amp; params, Consensus::DeploymentPos dep, VersionBitsCache&amp; versionbitscache)
+ {
+     assert(Consensus::ValidDeployment(dep));
+     if (ThresholdState::ACTIVE != versionbitscache.State(pindexPrev, params, dep)) return false;
+
+     const auto&amp; deployment = params.vDeployments[dep];
+     // Permanent deployment (never expires)
+<span style='color:#0057ae;'>+    if (deployment.active_duration == std::numeric_limits&lt;int&gt;::max()) return true;</span>
+
+<span style='color:#0057ae;'>+    const int activation_height = versionbitscache.StateSinceHeight(pindexPrev, params, dep);</span>
+<span style='color:#0057ae;'>+    const int height = pindexPrev == nullptr ? 0 : pindexPrev-&gt;nHeight + 1;</span>
+<span style='color:#0057ae;'>+    return height &lt; activation_height + deployment.active_duration;</span>
+ }
+</pre>
+</td><td>
+<br><br><br><br><br>
+This adds the ability for a softfork to expire.<br>
+<br>
+First, it skips the entire new logic for the existing permanent softforks (eg, Taproot).<br>
+<br>
+Then, it looks up the activation height, adds the softfork's duration to that, and compares it to the current block's height.
+</tr>
+<tr><td>
+<pre>
+ /** Determine if mandatory signaling is required for a deployment at the next block */
+ inline bool DeploymentMustSignalAfter(const CBlockIndex* pindexPrev, const Consensus::Params&amp; params, Consensus::DeploymentPos dep, ThresholdState state)
+ {
+     assert(Consensus::ValidDeployment(dep));
+     const auto&amp; deployment = params.vDeployments[dep];
+<span style='color:#0057ae;'>+    if (deployment.max_activation_height &gt;= std::numeric_limits&lt;int&gt;::max()) return false;</span>
+<span style='color:#0057ae;'>+    if (state != ThresholdState::STARTED) return false;  // If must_signal height is reached before start time, abstain from enforcement</span>
+     const int nPeriod = params.nMinerConfirmationWindow;
+<span style='color:#0057ae;'>+    const int nHeight = pindexPrev == nullptr ? 0 : pindexPrev-&gt;nHeight + 1;</span>
+<span style='color:#0057ae;'>+    return nHeight &gt;= deployment.max_activation_height - (2 * nPeriod)</span>
+<span style='color:#0057ae;'>+        &amp;&amp; nHeight &lt; deployment.max_activation_height - nPeriod;</span>
+ }
+</pre>
+</td><td>
+This code determines if a block is required to signal for BIP110.<br>
+<br>
+It checks that the softfork is not already "locked in", and that the block is within two 2016-block periods prior to mandatory activation.<br>
+<br>
+If it's already locked in (ie, miners reached 55% signalling), no signal is enforced.
+If the block is earlier than block 961632 (<code>965664 - 2016 * 2</code>), no signal is enforced.<br>
+<br>
+Note that after this period, 100% of blocks will have signalled, so it will be locked in for the subsequent final pre-activation period (and therefore, no signal is required for those 2 weeks).
+</td></tr>
+<tr><td colspan="2"><h2>src/script/interpreter.cpp</h2></td></tr>
+<tr><td>
+<em>Part of: bool EvalScript(std::vector&lt;std::vector&lt;unsigned char&gt; &gt;&amp; stack, const CScript&amp; ...</em>
+<pre>
+     execdata.m_codeseparator_pos = 0xFFFFFFFFUL;
+     execdata.m_codeseparator_pos_init = true;
+ 
+<span style='color:#0057ae;'>+    const unsigned int max_element_size = (flags &amp; SCRIPT_VERIFY_REDUCED_DATA) ? MAX_SCRIPT_ELEMENT_SIZE_REDUCED : MAX_SCRIPT_ELEMENT_SIZE;</span>
+
+     try
+     {
+         for (; pc &lt; pend; ++opcode_pos) {
+</pre>
+...
+</td><td>
+When BIP110 is active, the script interpreter simply uses a lower limit for the existing element size checks.
+(Part of <strong>Rule 2</strong>)
+</td></tr>
+<tr><td>
+<pre>
+                         if (sigversion == SigVersion::TAPSCRIPT) {
+                             // The input argument to the OP_IF and OP_NOTIF opcodes must be either
+                             // exactly 0 (the empty vector) or exactly 1 (the one-byte vector with value 1).
+                             if (vch.size() &gt; 1 || (vch.size() == 1 &amp;&amp; vch[0] != 1)) {
+                                 return set_error(serror, SCRIPT_ERR_TAPSCRIPT_MINIMALIF);
+                             }
+                             // REDUCED_DATA bans OP_IF/OP_NOTIF entirely in tapscript;
+                             // reuses MINIMALIF error code as this is a stricter form of the same restriction
+<span style='color:#0057ae;'>+                            if (flags &amp; SCRIPT_VERIFY_REDUCED_DATA) {</span>
+<span style='color:#0057ae;'>+                                return set_error(serror, SCRIPT_ERR_TAPSCRIPT_MINIMALIF);</span>
+                             }
+                         }
+                         // Under witness v0 rules it is only a policy rule, enabled through SCRIPT_VERIFY_MINIMALIF.
+                         if (sigversion == SigVersion::WITNESS_V0 &amp;&amp; (flags &amp; SCRIPT_VERIFY_MINIMALIF)) {
+</pre>
+</td><td>
+Tapscript already strictly restricts the condition for OP_IF to either true or false.<br>
+<br>
+If BIP110 is active, we just reject OP_IF entirely the same way.
+(<strong>Rule 7</strong>)
+</td></tr>
+<tr><td>
+<em>Part of: static bool ExecuteWitnessScript(const Span&lt;const valtype&gt;&amp; stack_span, const CS...</em>
+<pre>
+     // Disallow stack item size &gt; MAX_SCRIPT_ELEMENT_SIZE in witness stack
+<span style='color:#0057ae;'>+    const unsigned int max_element_size = (flags &amp; SCRIPT_VERIFY_REDUCED_DATA) ? MAX_SCRIPT_ELEMENT_SIZE_REDUCED : MAX_SCRIPT_ELEMENT_SIZE;</span>
+     for (const valtype&amp; elem : stack) {
+         if (elem.size() &gt; max_element_size) return set_error(serror, SCRIPT_ERR_PUSH_SIZE);
+     }
+ 
+     // Run the script interpreter.
+</pre>
+</td><td>
+As with <code>EvalScript</code>, this uses the same lower limit for script argument witness items when BIP110 is active.
+(Part of <strong>Rule 2</strong>)
+</td></tr>
+<tr><td>
+<em>Part of: static bool VerifyWitnessProgram(const CScriptWitness&amp; witness, int witversion,...</em>
+<pre>
+         if (stack.size() &gt;= 2 &amp;&amp; !stack.back().empty() &amp;&amp; stack.back()[0] == ANNEX_TAG) {
+             // Drop annex (this is non-standard; see IsWitnessStandard)
+             const valtype&amp; annex = SpanPopBack(stack);
+<span style='color:#0057ae;'>+            if (flags &amp; SCRIPT_VERIFY_REDUCED_DATA) {</span>
+<span style='color:#0057ae;'>+                return set_error(serror, SCRIPT_ERR_PUSH_SIZE);</span>
+             }
+             execdata.m_annex_hash = (HashWriter{} &lt;&lt; annex).GetSHA256();
+             execdata.m_annex_present = true;
+         } else {
+</pre>
+</td><td>
+When BIP110 is active, this rejects any witness annex.
+(<strong>Rule 4</strong>)
+</td></tr>
+<tr><td>
+...
+<pre>
+             // Script path spending (stack size is &gt;1 after removing optional annex)
+             const valtype&amp; control = SpanPopBack(stack);
+             const valtype&amp; script = SpanPopBack(stack);
+<span style='color:#0057ae;'>+            const unsigned int max_control_size = (flags &amp; SCRIPT_VERIFY_REDUCED_DATA) ? TAPROOT_CONTROL_MAX_SIZE_REDUCED : TAPROOT_CONTROL_MAX_SIZE;</span>
+             if (control.size() &lt; TAPROOT_CONTROL_BASE_SIZE || control.size() &gt; max_control_size || ((control.size() - TAPROOT_CONTROL_BASE_SIZE) % TAPROOT_CONTROL_NODE_SIZE) != 0) {
+                 return set_error(serror, SCRIPT_ERR_TAPROOT_WRONG_CONTROL_SIZE);
+             }
+             execdata.m_tapleaf_hash = ComputeTapleafHash(control[0] &amp; TAPROOT_LEAF_MASK, script);
+</pre>
+</td><td>
+When BIP110 is active, the taproot control block is limited to a smaller size.
+(<strong>Rule 5</strong>)
+</td></tr>
+<tr><td>
+...
+<pre>
+             }
+             return set_success(serror);
+         }
+<span style='color:#bf0303;'>-    } else if (!is_p2sh &amp;&amp; CScript::IsPayToAnchor(witversion, program)) {</span>
+<span style='color:#0057ae;'>+    } else if (stack.empty() &amp;&amp; !is_p2sh &amp;&amp; CScript::IsPayToAnchor(witversion, program)) {</span>
+         return true;
+     } else {
+         if (flags &amp; SCRIPT_VERIFY_DISCOURAGE_UPGRADABLE_WITNESS_PROGRAM) {
+</pre>
+</td><td>
+This is actually a bugfix for a bug in Core.
+Anchor outputs cannot have a witness stack.
+Core enforces this with a policy filter (which you can't turn off).
+However, since <strong>Rule 3</strong> makes undefined witness versions invalid, we have to fix this here.
+</td></tr>
+<tr><td>
+<em>Part of: bool VerifyScript(const CScript&amp; scriptSig, const CScript&amp; scriptPubKey, const C...</em>
+<pre>
+     // scriptSig and scriptPubKey must be evaluated sequentially on the same stack
+     // rather than being simply concatenated (see CVE-2010-5141)
+     std::vector&lt;std::vector&lt;unsigned char&gt; &gt; stack, stackCopy;
+<span style='color:#0057ae;'>+    if (scriptPubKey.IsPayToScriptHash()) {</span>
+         // Disable SCRIPT_VERIFY_REDUCED_DATA for pushing the P2SH redeemScript
+<span style='color:#0057ae;'>+        if (!EvalScript(stack, scriptSig, flags &amp; ~SCRIPT_VERIFY_REDUCED_DATA, checker, SigVersion::BASE, serror))</span>
+             // serror is set
+<span style='color:#0057ae;'>+            return false;</span>
+<span style='color:#0057ae;'>+    } else</span>
+     if (!EvalScript(stack, scriptSig, flags, checker, SigVersion::BASE, serror))
+         // serror is set
+         return false;
+</pre>
+</td><td>
+This executes the pre-Segwit <code>scriptSig</code> for inputs being spent in a transaction.<br>
+<br>
+BIP110 makes an exception to <strong>Rule 2</strong> for the P2SH <code>scriptSig</code>, so this change removes the BIP110 flag when executing it in that case.
+</td></tr>
+<tr><td>
+...
+<pre>
+         CScript pubKey2(pubKeySerialized.begin(), pubKeySerialized.end());
+         popstack(stack);
+ 
+<span style='color:#0057ae;'>+        if (flags &amp; SCRIPT_VERIFY_REDUCED_DATA) {</span>
+             // We bypassed the reduced data check above to exempt redeemScript
+             // Now enforce it on the rest of the stack items here
+             // This is sufficient because P2SH requires scriptSig to be push-only
+<span style='color:#0057ae;'>+            for (const valtype&amp; elem : stack) {</span>
+<span style='color:#0057ae;'>+                if (elem.size() &gt; MAX_SCRIPT_ELEMENT_SIZE_REDUCED) return set_error(serror, SCRIPT_ERR_PUSH_SIZE);</span>
+             }
+         }
+
+         if (!EvalScript(stack, pubKey2, flags, checker, SigVersion::BASE, serror))
+             // serror is set
+             return false;
+</pre>
+</td><td>
+Because of the exception we just made, it's possible the P2SH <code>scriptSig</code> exceeded the lowered element size limit.<br>
+<br>
+After taking <code>pubKey2</code> off the stack, we check the sizes of everything else.<br>
+(Part of <strong>Rule 2</strong>)
+<br>
+P2SH only allows adding elements to the stack, so nothing could have "snuck by" during <code>EvalScript</code> that isn't still there.
+</td></tr>
+<tr><td colspan="2"><h2>src/validation.cpp</h2></td></tr>
+<tr><td>
+<em>Part of: bool CheckInputScripts(const CTransaction&amp; tx, TxValidationState&amp; state,...</em>
+<pre>
+         txdata.Init(tx, std::move(spent_outputs));
+     }
+     assert(txdata.m_spent_outputs.size() == tx.vin.size());
+     assert(flags_per_input.empty() || flags_per_input.size() == tx.vin.size());
+ 
+     for (unsigned int i = 0; i &lt; tx.vin.size(); i++) {
+<span style='color:#0057ae;'>+        if (!flags_per_input.empty()) flags = flags_per_input[i];</span>
+ 
+         // We very carefully only pass in things to CScriptCheck which
+         // are clearly committed to by tx' witness hash. This provides
+</pre>
+</td><td>
+<code>CheckInputScripts</code> previously assumed all input scripts would be executed with the same flags.<br>
+<br>
+However, because of BIP110's grandfathering provision, it is now possible that some will be checked with BIP110 enabled, while others are checked with its rules disabled.
+<br>
+This code adds the ability to override flags per-input.
+</td></tr>
+<tr><td>
+...
+<pre>
+         }
+     }
+ 
+<span style='color:#bf0303;'>-    if (cacheFullScriptStore &amp;&amp; !pvChecks) {</span>
+<span style='color:#0057ae;'>+    if (cacheFullScriptStore &amp;&amp; (!pvChecks) &amp;&amp; flags_per_input.empty()) {</span>
+         // We executed all of the provided scripts, and were told to
+         // cache the result. Do so now.
+         validation_cache.m_script_execution_cache.insert(hashCacheEntry);
+</pre>
+</td><td>
+The result of script checks is sometimes cached for performance.
+But the cache is keyed to the one-flags-for-all assumption.
+We could change that, but it's simpler to just disable the cache in this case.
+</td></tr>
+<tr><td>
+<em>Part of: static unsigned int GetBlockScriptFlags(const CBlockIndex&amp; block_index, const Ch...</em>
+<pre>
+         flags |= SCRIPT_VERIFY_NULLDUMMY;
+     }
+ 
+<span style='color:#0057ae;'>+    if (DeploymentActiveAt(block_index, chainman, Consensus::DEPLOYMENT_REDUCED_DATA)) {</span>
+<span style='color:#0057ae;'>+        flags |= REDUCED_DATA_MANDATORY_VERIFY_FLAGS;</span>
+     }
+
+     return flags;
+ }
+</pre>
+</td><td>
+<code>GetBlockScriptFlags</code> decides what flags scripts are executed with for a given block.<br>
+<br>
+If BIP110 is active, this selects its flags (which enable enforcement of <strong>Rules 2-7</strong>).<br>
+<br>
+Note that most of the nuanced logic for this is actually already implemented in Bitcoin Core as policies/filters.
+</td></tr>
+<tr><td>
+<em>Part of: bool Chainstate::ConnectBlock(const CBlock&amp; block, BlockValidationState&amp; state,...</em>
+<pre>
+     uint256 hashPrevBlock = pindex-&gt;pprev == nullptr ? uint256() : pindex-&gt;pprev-&gt;GetBlockHash();
+     assert(hashPrevBlock == view.GetBestBlock());
+ 
+<span style='color:#0057ae;'>+    if (!ContextualCheckBlockHeaderVolatile(block, state, m_chainman, pindex-&gt;pprev)) {</span>
+         LogError(&quot;%s: Consensus::ContextualCheckBlockHeaderVolatile: %s\n&quot;, __func__, state.ToString());
+<span style='color:#0057ae;'>+        return false;</span>
+     }
+
+     m_chainman.num_blocks_total++;
+ 
+     // Special case for the genesis block, skipping connection of its transactions
+</pre>
+</td><td>
+This adds a new check to blocks (details below).
+</td></tr>
+<tr><td>
+...
+<pre>
+     std::vector&lt;PrecomputedTransactionData&gt; txsdata(block.vtx.size());
+     CCheckQueueControl&lt;CScriptCheck&gt; control(fScriptChecks &amp;&amp; parallel_script_checks ? &amp;m_chainman.GetCheckQueue() : nullptr);
+
+     // For BIP9 deployments, get the activation height dynamically
+<span style='color:#0057ae;'>+    const auto reduced_data_start_height = DeploymentActiveAt(*pindex, m_chainman, Consensus::DEPLOYMENT_REDUCED_DATA)</span>
+<span style='color:#0057ae;'>+        ? m_chainman.m_versionbitscache.StateSinceHeight(pindex-&gt;pprev, params.GetConsensus(), Consensus::DEPLOYMENT_REDUCED_DATA)</span>
+<span style='color:#0057ae;'>+        : std::numeric_limits&lt;int&gt;::max();</span>
+
+<span style='color:#0057ae;'>+    const CheckTxInputsRules chk_input_rules{DeploymentActiveAt(*pindex, m_chainman, Consensus::DEPLOYMENT_REDUCED_DATA) ? CheckTxInputsRules::OutputSizeLimit : CheckTxInputsRules::None};</span>
+</pre>
+</td><td>
+This simply determines the start height of BIP110 from the perspective of a single block.<br>
+<br>
+If it's not active yet, the block treats it as active in the far future (when none of this code works at all anymore).<br>
+<br>
+Otherwise, <code>reduced_data_start_height</code> is assigned to the height of the first BIP110 block.<br>
+<br>
+Likewise, <code>chk_input_rules</code> is set to <code>OutputSizeLimit</code> if active, or <code>None</code> if not.
+</td></tr>
+<tr><td>
+<pre>
+     // Check generation tx output sizes if REDUCED_DATA is active
+<span style='color:#0057ae;'>+    if (chk_input_rules.test(CheckTxInputsRules::OutputSizeLimit)) {</span>
+<span style='color:#0057ae;'>+        TxValidationState tx_state;</span>
+<span style='color:#0057ae;'>+        if (!Consensus::CheckOutputSizes(*block.vtx[0], tx_state)) {</span>
+<span style='color:#0057ae;'>+            return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS,</span>
+                                  tx_state.GetRejectReason(),
+                                  tx_state.GetDebugMessage() + &quot; in generation tx &quot; + block.vtx[0]-&gt;GetHash().ToString());
+         }
+     }
+</pre>
+</td><td>
+Because <code>CheckTxInputs</code> doesn't run on the generation transaction (it has no inputs), this explicitly checks it with <code>CheckOutputSizes</code> individually.
+(<strong>Rule 1</strong>)
+</td></tr>
+<tr><td>
+<pre>
+
+     std::vector&lt;int&gt; prevheights;
+     CAmount nFees = 0;
+     int nInputs = 0;
+     int64_t nSigOpsCost = 0;
+     blockundo.vtxundo.reserve(block.vtx.size() - 1);
+<span style='color:#0057ae;'>+    std::vector&lt;unsigned int&gt; flags_per_input;</span>
+     for (unsigned int i = 0; i &lt; block.vtx.size(); i++)
+     {
+         if (!state.IsValid()) break;
+</pre>
+</td><td>
+This sets up a new <code>flags_per_input</code> list, in case it's needed below:
+</td></tr>
+<tr><td>
+...
+<pre>
+         {
+             CAmount txfee = 0;
+             TxValidationState tx_state;
+<span style='color:#bf0303;'>-            if (!Consensus::CheckTxInputs(tx, tx_state, view, pindex-&gt;nHeight, txfee)) {</span>
+<span style='color:#0057ae;'>+            if (!Consensus::CheckTxInputs(tx, tx_state, view, pindex-&gt;nHeight, txfee, chk_input_rules)) {</span>
+                 // Any transaction validation failure in ConnectBlock is a block consensus failure
+                 state.Invalid(BlockValidationResult::BLOCK_CONSENSUS,
+                               tx_state.GetRejectReason(),
+</pre>
+</td><td>
+Convey the decision to check output sizes into <code>CheckTxInputs</code>.
+</td></tr>
+<tr><td>
+...
+<pre>
+             // BIP68 lock checks (as opposed to nLockTime checks) must
+             // be in ConnectBlock because they require the UTXO set
+             prevheights.resize(tx.vin.size());
+<span style='color:#0057ae;'>+            flags_per_input.clear();</span>
+             for (size_t j = 0; j &lt; tx.vin.size(); j++) {
+                 prevheights[j] = view.AccessCoin(tx.vin[j].prevout).nHeight;
+<span style='color:#0057ae;'>+                if (prevheights[j] &lt; reduced_data_start_height) {</span>
+<span style='color:#0057ae;'>+                    flags_per_input.resize(tx.vin.size(), flags);</span>
+<span style='color:#0057ae;'>+                    flags_per_input[j] = flags &amp; ~REDUCED_DATA_MANDATORY_VERIFY_FLAGS;</span>
+                 }
+             }
+ 
+             if (!SequenceLocks(tx, nLockTimeFlags, prevheights, *pindex)) {
+</pre>
+</td><td>
+For each transaction being verified, we reset <code>flags_per_input</code>.<br>
+<br>
+Only if at least one input qualifies for grandfathering, we make <code>flags_per_input</code> effective by resizing it to the number of inputs (all defaulted to <code>flags</code> as-is), and individually clear the BIP110 flag for grandfathered inputs.
+</td></tr>
+<tr><td>
+<pre>
+...
+             std::vector&lt;CScriptCheck&gt; vChecks;
+             bool fCacheResults = fJustCheck; /* Don't cache results if we're actually connecting blocks (still consult the cache, though) */
+             TxValidationState tx_state;
+<span style='color:#bf0303;'>-            if (fScriptChecks &amp;&amp; !CheckInputScripts(tx, tx_state, view, flags, fCacheResults, fCacheResults, txsdata[i], m_chainman.m_validation_cache, parallel_script_checks ? &amp;vChecks : nullptr)) {</span>
+<span style='color:#0057ae;'>+            if (fScriptChecks &amp;&amp; !CheckInputScripts(tx, tx_state, view, flags, fCacheResults, fCacheResults, txsdata[i], m_chainman.m_validation_cache, parallel_script_checks ? &amp;vChecks : nullptr, flags_per_input)) {</span>
+                 // Any transaction validation failure in ConnectBlock is a block consensus failure
+                 state.Invalid(BlockValidationResult::BLOCK_CONSENSUS,
+                               tx_state.GetRejectReason(), tx_state.GetDebugMessage());
+</pre>
+</td><td>
+Convey the new <code>flags_per_input</code> decisions to <code>CheckInputScripts</code>.
+</td></tr>
+<tr><td>
+...
+<em>Part of: static bool ContextualCheckBlockHeader(const CBlockHeader&amp; block, BlockValidatio...</em>
+<pre>
+         }
+     }
+  
+<span style='color:#0057ae;'>+    if (!ContextualCheckBlockHeaderVolatile(block, state, chainman, pindexPrev)) return false;</span>
+
+     return true;
+ }
+</pre>
+</td><td>
+Add an additional check (<code>ContextualCheckBlockHeaderVolatile</code>) to block header validation.
+</td></tr>
+<tr><td>
+<pre>
+ /** Context-dependent validity checks, but rechecked in ConnectBlock().
+  *  Note that -reindex-chainstate skips the validation that happens here!
+  */
+ static bool ContextualCheckBlockHeaderVolatile(const CBlockHeader&amp; block, BlockValidationState&amp; state, const ChainstateManager&amp; chainman, const CBlockIndex* pindexPrev) EXCLUSIVE_LOCKS_REQUIRED(::cs_main)
+ {
+     const Consensus::Params&amp; consensusParams = chainman.GetConsensus();
+
+     // Mandatory signaling for deployments approaching max_activation_height
+<span style='color:#0057ae;'>+    for (int i = 0; i &lt; (int)Consensus::MAX_VERSION_BITS_DEPLOYMENTS; i++) {</span>
+<span style='color:#0057ae;'>+        const Consensus::DeploymentPos pos = static_cast&lt;Consensus::DeploymentPos&gt;(i);</span>
+<span style='color:#0057ae;'>+        const ThresholdState deployment_state = chainman.m_versionbitscache.State(pindexPrev, consensusParams, pos);</span>
+
+<span style='color:#0057ae;'>+        if (DeploymentMustSignalAfter(pindexPrev, consensusParams, pos, deployment_state)) {</span>
+             const auto&amp; deployment = consensusParams.vDeployments[pos];
+<span style='color:#0057ae;'>+            const bool fVersionBits = (block.nVersion &amp; VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS;</span>
+<span style='color:#0057ae;'>+            const bool fDeploymentBit = (block.nVersion &amp; (uint32_t{1} &lt;&lt; deployment.bit)) != 0;</span>
+
+<span style='color:#0057ae;'>+            if (!(fVersionBits &amp;&amp; fDeploymentBit)) {</span>
+<span style='color:#0057ae;'>+                const std::string deployment_name = VersionBitsDeploymentInfo[i].name;</span>
+<span style='color:#0057ae;'>+                return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS,</span>
+                                    &quot;bad-version-&quot; + deployment_name,
+                                    strprintf(&quot;Block must signal for %s approaching max_activation_height=%d&quot;,
+                                            deployment_name, deployment.max_activation_height));
+             }
+         }
+     }
+
+<span style='color:#0057ae;'>+    return true;</span>
+ }
+</pre>
+</td><td>
+If <code>DeploymentMustSignalAfter</code> decides we are at a mandatory signalling block height, check the block actually signals.
+If not, reject it as invalid.
+</td></tr>
+<tr><td colspan="2"><h2>src/versionbits.cpp</h2></td></tr>
+<tr><td>
+<em>Part of: ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex*...</em>
+<pre>
+     assert(cache.count(pindexPrev));
+     ThresholdState state = cache[pindexPrev];
+ 
+     // Everything is already cached. Return immediately.
+<span style='color:#0057ae;'>+    if (vToCompute.empty()) {</span>
+<span style='color:#0057ae;'>+        return state;</span>
+     }
+</pre>
+</td><td>
+Adds a shortcut to skip the newly-added <code>GetStateSinceHeightFor</code> calculation if the outcome is already cached anyway.
+</td></tr>
+<tr><td>
+<pre>
+     // For temporary deployments, we need to know when ACTIVE started to determine the
+     // ACTIVE -&gt; EXPIRED transition. We get this by calling GetStateSinceHeightFor, which
+     // internally calls GetStateFor on earlier periods. Those calls could recurse back here
+     // and call GetStateSinceHeightFor again, but the early return above prevents this:
+     // the walk-back above guarantees all periods before pindexPrev are already cached,
+     // and GetStateSinceHeightFor only walks backwards, so its GetStateFor calls always hit
+     // the cache, have empty vToCompute, and return immediately via the early return.
+<span style='color:#0057ae;'>+    int activation_height = 0;</span>
+<span style='color:#0057ae;'>+    if (state == ThresholdState::ACTIVE &amp;&amp; active_duration &lt; std::numeric_limits&lt;int&gt;::max()) {</span>
+<span style='color:#0057ae;'>+        activation_height = GetStateSinceHeightFor(pindexPrev, params, cache);</span>
+     }
+
+     // Now walk forward and compute the state of descendants of pindexPrev
+     while (!vToCompute.empty()) {
+         ThresholdState stateNext = state;
+</pre>
+</td><td>
+If we're looking at an already-active temporary deployment, look up when it first activated.
+</td></tr>
+<tr><td>
+...
+<pre>
+                     pindexCount = pindexCount-&gt;pprev;
+                 }
+                 if (count &gt;= nThreshold) {
+                     // Normal BIP9 activation via signaling
+                     stateNext = ThresholdState::LOCKED_IN;
+<span style='color:#0057ae;'>+                } else if (max_activation_height &lt; std::numeric_limits&lt;int&gt;::max() &amp;&amp; pindexPrev-&gt;nHeight + 1 &gt;= max_activation_height - nPeriod) {</span>
+                     // Force LOCKED_IN one period before max_activation_height
+                     // This ensures activation happens AT max_activation_height (not one period later)
+                     // Overrides timeout to guarantee activation
+<span style='color:#0057ae;'>+                    stateNext = ThresholdState::LOCKED_IN;</span>
+                 } else if (pindexPrev-&gt;GetMedianTimePast() &gt;= nTimeTimeout) {
+                     // Timeout without activation
+                     stateNext = ThresholdState::FAILED;
+                 }
+                 break;
+</pre>
+</td><td>
+Ensure the period immediately prior to mandatory activation (if any) is forced to "locked in" state.<br>
+<br>
+The mandatory signalling already ensures the first <code>count >= nThreshold</code> check does this, so this is technically redundant.
+</td></tr>
+<tr><td>
+...
+<pre>
+                 // Progresses into ACTIVE provided activation height will have been reached.
+                 if (pindexPrev-&gt;nHeight + 1 &gt;= min_activation_height) {
+                     stateNext = ThresholdState::ACTIVE;
+<span style='color:#0057ae;'>+                    if (active_duration &lt; std::numeric_limits&lt;int&gt;::max()) {</span>
+<span style='color:#0057ae;'>+                        activation_height = pindexPrev-&gt;nHeight + 1;</span>
+                     }
+                 }
+                 break;
+             }
+</pre>
+</td><td>
+If we reach active state as we walk the blockchain forward, make a note of what height it was at (only if we're dealing with a temporary deployment).
+</td></tr>
+<tr><td>
+<pre>
+             case ThresholdState::ACTIVE: {
+<span style='color:#0057ae;'>+                if (active_duration &lt; std::numeric_limits&lt;int&gt;::max() &amp;&amp;</span>
+<span style='color:#0057ae;'>+                    pindexPrev-&gt;nHeight + 1 &gt;= activation_height + active_duration) {</span>
+<span style='color:#0057ae;'>+                    stateNext = ThresholdState::EXPIRED;</span>
+                 }
+                 break;
+             }
+</pre>
+</td><td>
+If an active temporary deployment reaches the end of its duration, update its state to expired.
+</td></tr>
+<tr><td>
+...
+<pre>
+     int Threshold(const Consensus::Params&amp; params) const override {
+         // Use per-deployment threshold if set, otherwise fall back to global
+<span style='color:#bf0303;'>-        return params.nRuleChangeActivationThreshold;</span>
+<span style='color:#0057ae;'>+        int deploymentThreshold = params.vDeployments[id].threshold;</span>
+<span style='color:#0057ae;'>+        return deploymentThreshold &gt; 0 ? deploymentThreshold : params.nRuleChangeActivationThreshold;</span>
+     }
+</pre>
+</td><td>
+If a deployment doesn't have a threshold set, use the default defined by the chain parameters.
+</td></tr>
+</table>
+</body>
+</html>

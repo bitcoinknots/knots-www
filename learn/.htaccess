@@ -1,2 +1,2 @@
 RewriteEngine on
-RewriteRule ^rdts$ https://bip110.org [R=302,L]
+RewriteRule ^2026-rdts$ https://bip110.org [R=302,L]
