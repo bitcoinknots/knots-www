@@ -7,6 +7,49 @@
 		<atom:link href="https://bitcoinknots.org/list/announcements/rss.xml" rel="self" type="application/rss+xml" />
 
 		<item>
+			<title>PSA: Bitcoin network under attack</title>
+			<description>
+				&lt;p&gt;
+					The Bitcoin network is under attack, and block production has slowed significantly.
+				&lt;/p&gt;
+				&lt;p&gt;
+					The community is preparing mitigations to resolve the situation.
+					In the meantime, attackers are spreading misinformation and advising users to downgrade or switch to insecure node software.
+				&lt;/p&gt;
+				&lt;p&gt;
+					Users are strongly advised not to downgrade or switch to software that weakens Bitcoin's consensus protections. Doing so may compromise your security and expose you to false confirmations from blocks that are invalid under Bitcoin's consensus rules.
+				&lt;/p&gt;
+				&lt;p&gt;
+					If you have already downgraded, upgrade to the latest version of Bitcoin Knots. Knots will attempt to repair the resulting chain state and return your node to the valid chain.
+				&lt;/p&gt;
+				&lt;p&gt;
+					Miners who restart their nodes may need to add the following to bitcoin.conf:
+				&lt;/p&gt;
+				&lt;p&gt;&lt;code&gt;
+					maxtipage=2592000
+				&lt;/code&gt;&lt;/p&gt;
+				&lt;p&gt;
+					Another announcement will be published as soon as a mitigation is ready.
+				&lt;/p&gt;
+				&lt;p&gt;
+					If you would like to participate in the ongoing mitigation strategy, please join our Discord:
+				&lt;/p&gt;
+				&lt;p&gt;
+					<a href="https://discord.gg/scKhfvBnp">https://discord.gg/scKhfvBnp</a>
+				&lt;/p&gt;
+				&lt;p&gt;
+					A new proof-of-work algorithm will be chosen on August 11th at 14:00 UTC in the Discord #strategy channel, based on a deterministic random choice between candidates. A relevant hash for that proof-of-fairness:
+				&lt;/p&gt;
+				&lt;p&gt;&lt;code&gt;
+					71a7960874f3352f4ba600ce67bd6f8e96702565abea93021fa86349d99a45e8
+				&lt;/code&gt;&lt;/p&gt;
+			</description>
+			<pubDate>Mon, 10 Aug 2026 23:15:53 -0000</pubDate>
+			<link>https://bitcoinknots.org/#download</link>
+			<guid isPermaLink="false">20260810a</guid>
+		</item>
+
+		<item>
 			<title>Bitcoin Knots 29.4.knots20260508 released</title>
 			<description>
 				&lt;p&gt;
