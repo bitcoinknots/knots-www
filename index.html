@@ -12,6 +12,51 @@
 </head>
 
 <body class="overflow-x-hidden bg-silverSand">
+  <!-- under-attack announcement -->
+  <div id="announcement" class="w-full px-5 text-center lg:px-16"
+    style="background-color: #1b1b1b; padding-top: 20px; padding-bottom: 20px">
+    <details>
+      <summary class="cursor-pointer select-none font-manjariRegular text-sm text-white">
+        <span class="font-manjariBold">The Bitcoin network is under attack</span>
+        — block production has slowed significantly.
+        <span class="underline" style="color: #bfe623">Read the announcement</span>
+      </summary>
+      <div class="mx-auto flex max-w-[830px] flex-col gap-6 pt-8 text-start font-manjariRegular text-sm text-white">
+        <p>
+          The community is preparing mitigations to resolve the situation. In
+          the meantime, attackers are spreading misinformation and advising
+          users to downgrade or switch to insecure node software.
+        </p>
+        <p>
+          Users are strongly advised not to downgrade or switch to software
+          that weakens Bitcoin's consensus protections. Doing so may
+          compromise your security and expose you to false confirmations from
+          blocks that are invalid under Bitcoin's consensus rules.
+        </p>
+        <p>
+          If you have already downgraded,
+          <a class="underline" style="color: #bfe623" href="#download">upgrade to the latest version of Bitcoin
+            Knots</a>. Knots will attempt to repair the resulting chain state and
+          return your node to the valid chain.
+        </p>
+        <p>
+          Miners who restart their nodes may need to add the following to
+          bitcoin.conf:
+        </p>
+        <p>
+          <code style="font-family: monospace; background-color: rgba(255, 255, 255, 0.15); padding: 2px 10px; border-radius: 6px">maxtipage=2592000</code>
+        </p>
+        <p>
+          Another announcement will be published as soon as a mitigation is
+          ready. If you would like to participate in the ongoing mitigation
+          strategy, join the #strategic channel on
+          <a class="underline" style="color: #bfe623" href="https://discord.gg/3Ccegp9YrU" target="_blank"
+            rel="noopener noreferrer">the Bitcoin Knots Discord</a>.
+        </p>
+      </div>
+    </details>
+  </div>
+
   <!-- header -->
   <header class="md:pb-13 relative mx-auto px-6 pb-11 pt-8 md:pt-20 lg:px-16">
     <div class="flex w-full items-center justify-between">
